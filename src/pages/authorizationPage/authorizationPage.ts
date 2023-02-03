@@ -1,7 +1,6 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
-import './index.scss';
-const logo = require('./insta_logo.svg');
-const bg = require('./bg.png');
+const logo = require('../../assets/icons/insta_logo.svg');
+const bg = require('../../assets/img/bg.png');
 
 class AuthorizationPage {
   wrapper: HTMLElement;
@@ -57,6 +56,7 @@ class AuthorizationPage {
       'input'
     ) as HTMLInputElement;
     authorizationFormBodyPassword.placeholder = 'Пароль';
+    authorizationFormBodyPassword.type = 'password'
 
     const authorizationFormBodyLogIn = createHtmlElement(
       ['button', 'authorization-form__log-in'],

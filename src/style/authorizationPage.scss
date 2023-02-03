@@ -1,0 +1,134 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.authorization-wrapper {
+  height: 100vh;
+  font-size: 14px;
+  font-family: 'Segoe UI';
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .authorization-form-wrapper {
+    width: 350px;
+    border: 0.8px solid rgba(1, 1, 1, 0.246);
+
+    .authorization-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 40px;
+      .authorization-form__logo {
+        width: 173px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+
+      .authorization-form__body-wrapper {
+        width: 100%;
+        .authorization-form__body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+
+          .authorization-form__input {
+            border: 1px solid rgb(219, 219, 219);
+            background-color: #fafafa;
+            width: 100%;
+            min-width: 100%;
+            font-size: 11px;
+            padding: 10px;
+          }
+
+          .authorization-form__input:nth-child(1) {
+            margin-bottom: 5px;
+          }
+
+          .authorization-form__input:nth-child(2) {
+            margin-bottom: 10px;
+          }
+
+          .authorization-form__log-in {
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #47afff;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 0;
+            width: 100%;
+            margin-bottom: 20px;
+
+            &:hover {
+              background-color: #2c99ec;
+            }
+          }
+        }
+      }
+      .authorization-form__line-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .authorization-form__line-left {
+          display: inline-block;
+          height: 2px;
+          background-color: #ccc;
+          width: 100%;
+        }
+
+        .authorization-form__line-text {
+          margin: 0 4px;
+          display: inline-block;
+        }
+
+        .authorization-form__line-right {
+          display: inline-block;
+          height: 2px;
+          background-color: #ccc;
+          width: 100%;
+        }
+      }
+      .authorization-form__forgot {
+        color: rgb(0, 55, 107);
+        font-size: 12px;
+        text-decoration: none;
+      }
+      .authorization-form__sign-up-link {
+        padding: 20px 0px;
+      }
+    }
+  }
+
+  .authorization-form-wrapper-sign-in {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+  }
+
+  @media screen and (max-width: 880px) {
+    .left-side-wrapper {
+      display: none;
+    }
+  }
+}
+
+.authorization-form-sign-up {
+  font-size: 12px;
+  a {
+    color: #47afff;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+}
