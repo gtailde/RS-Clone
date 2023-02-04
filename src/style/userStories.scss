@@ -1,0 +1,12 @@
+.user-stories-wrapper {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 50px;
+  .user-stories-item {
+    text-align: center;
+    .user-stories-item__image {
+        border-radius: 50%;
+    }
+  }
+}

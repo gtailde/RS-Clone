@@ -1,11 +1,15 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
 const settings_icon = require('../../assets/icons/settings-icon.svg');
+import UserStoriesComponent from '../../components/userStories/userStories';
 
-class userProfilePage {
+class UserProfilePage {
   wrapper: HTMLElement;
-
+  // innerWrapper: HTMLElement;
+  userStoriesComponent: UserStoriesComponent;
   constructor() {
     this.wrapper = createHtmlElement('user-profile-wrapper', 'div');
+    // this.innerWrapper = createHtmlElement('user-profile-inner-wrapper', 'div');
+    this.userStoriesComponent = new UserStoriesComponent();
   }
 
   appendTo(elem: HTMLElement, toElem: HTMLElement) {
@@ -16,16 +20,16 @@ class userProfilePage {
     const userAboutWrapper = createHtmlElement('user-about-wrapper', 'div');
 
     // Top
-    const userAboutImage = createHtmlElement('user-about-image-wrapper', 'div');
+    const userAboutImageWrapper = createHtmlElement('user-about-image-wrapper', 'div');
     const userImage = new Image();
     userImage.src = 'https://via.placeholder.com/150';
     userImage.className = 'user-about-image';
-    this.appendTo(userImage, userAboutImage);
-    this.appendTo(userAboutImage, userAboutWrapper);
+    this.appendTo(userImage, userAboutImageWrapper);
+    this.appendTo(userAboutImageWrapper, userAboutWrapper);
 
-    const userAboutInfo = createHtmlElement('user-about-info', 'div');
+    const userAboutInfoWrapper = createHtmlElement('user-about-info', 'div');
     const userAboutInfoHeader = createHtmlElement('user-about-info__header', 'div');
-    this.appendTo(userAboutInfoHeader, userAboutInfo);
+    this.appendTo(userAboutInfoHeader, userAboutInfoWrapper);
     const userAboutInfoHeaderUserName = createHtmlElement('user-about-info__username', 'div', 'username');
     const userAboutInfoHeaderEditButton = createHtmlElement(
       ['user-about-info__edit-button', 'button'],
@@ -40,11 +44,11 @@ class userProfilePage {
     this.appendTo(userAboutInfoHeaderUserName, userAboutInfoHeader);
     this.appendTo(userAboutInfoHeaderEditButton, userAboutInfoHeader);
     this.appendTo(userAboutInfoHeaderSettingsButton, userAboutInfoHeader);
-    this.appendTo(userAboutInfo, userAboutWrapper);
+    this.appendTo(userAboutInfoWrapper, userAboutWrapper);
 
     // Middle
     const userAboutInfoData = createHtmlElement('user-about-info__data', 'div');
-    this.appendTo(userAboutInfoData, userAboutInfo);
+    this.appendTo(userAboutInfoData, userAboutInfoWrapper);
     const userAboutInfoDataPublicationsWrapper = createHtmlElement('user-about-info__publications-wrapper', 'div');
     const userAboutInfoDataPublicationsText = createHtmlElement(
       'user-about-info__publications-text',
@@ -86,11 +90,11 @@ class userProfilePage {
     this.appendTo(userAboutInfoDataPublicationsWrapper, userAboutInfoData);
     this.appendTo(userAboutInfoDataFollowersWrapper, userAboutInfoData);
     this.appendTo(userAboutInfoDataSubscriptionsWrapper, userAboutInfoData);
-    this.appendTo(userAboutInfoData, userAboutInfo);
+    this.appendTo(userAboutInfoData, userAboutInfoWrapper);
 
     // Bottom
     const userAboutInfoDescriptions = createHtmlElement('user-about-info__descriptions', 'div');
-    this.appendTo(userAboutInfoDescriptions, userAboutInfo);
+    this.appendTo(userAboutInfoDescriptions, userAboutInfoWrapper);
     const userAboutInfoDescriptionsNickname = createHtmlElement('user-about-info__nickname', 'div', 'Nickname');
     const userAboutInfoDescriptionsProfession = createHtmlElement('user-about-info__profession', 'div', 'Profession');
     const userAboutInfoDescriptionsContent = createHtmlElement(
@@ -101,16 +105,22 @@ class userProfilePage {
     this.appendTo(userAboutInfoDescriptionsNickname, userAboutInfoDescriptions);
     this.appendTo(userAboutInfoDescriptionsProfession, userAboutInfoDescriptions);
     this.appendTo(userAboutInfoDescriptionsContent, userAboutInfoDescriptions);
-    this.appendTo(userAboutInfoDescriptions, userAboutInfo);
+    this.appendTo(userAboutInfoDescriptions, userAboutInfoWrapper);
 
     // END
-    this.appendTo(userAboutWrapper, document.body);
+    this.appendTo(userAboutWrapper, this.wrapper);
+    this.appendTo(this.wrapper, document.body);
+  }
+
+  renderUserStoriesComponent() {
+    this.userStoriesComponent.draw();
   }
 
   draw() {
     this.renderUserAbout();
+    this.renderUserStoriesComponent();
   }
 }
 
-const implementsUserProfilePage = new userProfilePage();
+const implementsUserProfilePage = new UserProfilePage();
 export default implementsUserProfilePage;
