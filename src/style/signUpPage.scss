@@ -16,7 +16,6 @@ body {
   flex-direction: column;
   font-size: 14px;
   font-family: 'Segoe UI';
-  height: 100vh;
   width: 100%;
 
   .sign-up {
@@ -63,7 +62,13 @@ body {
           border: 1px solid rgb(219, 219, 219);
           background-color: #fafafa;
           font-size: 11px;
-          padding: 9px 0 7px 8px;
+          padding: 12px 0 11px 8px;
+          border-radius: 1px;
+          text-overflow: ellipsis;
+
+          &:focus {
+            outline: 1px solid rgb(113, 113, 113);
+          }
         }
 
         .signUp-form__submit {
