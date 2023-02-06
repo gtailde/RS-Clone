@@ -49,18 +49,22 @@ class SignUpPage {
       'input'
     ) as HTMLInputElement;
     signUpFormBodyLogin.placeholder = 'Моб. телефон или эл. адрес';
+    signUpFormBodyLogin.required = true;
+    signUpFormBodyLogin.pattern = '^(?:\\d{10}|\\w+@\\w+\\.\\w{2,3})$';
 
     const signUpFormBodyFirstLastName = createHtmlElement(
       ['signUp-form__first-last-name', 'signUp-form__input'],
       'input'
     ) as HTMLInputElement;
     signUpFormBodyFirstLastName.placeholder = 'Имя и фамилия';
+    signUpFormBodyFirstLastName.required = true;
 
     const signUpFormBodyUserName = createHtmlElement(
       ['signUp-form__username', 'signUp-form__input'],
       'input'
     ) as HTMLInputElement;
     signUpFormBodyUserName.placeholder = 'Имя пользователя';
+    signUpFormBodyUserName.required = true;
 
     const signUpFormBodyPassword = createHtmlElement(
       ['signUp-form__password', 'signUp-form__input'],
@@ -68,7 +72,8 @@ class SignUpPage {
     ) as HTMLInputElement;
     signUpFormBodyPassword.placeholder = 'Пароль';
     signUpFormBodyPassword.type = 'password';
-    signUpFormBodyPassword.pattern = '^[a-zA-Z]\\w{3,14}$';
+    signUpFormBodyPassword.pattern = '((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{3,20})';
+    signUpFormBodyPassword.required = true;
     const signUpFormBodyPolicy = createHtmlElement('signUp-form__policy', 'div');
     signUpFormBodyPolicy.innerHTML = `Люди, которые пользуются нашим сервисом, могли загрузить вашу контактную информацию в Instagram. <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank">Подробнее</a>
     <br><br>
