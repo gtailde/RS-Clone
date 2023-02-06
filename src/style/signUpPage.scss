@@ -97,6 +97,29 @@ body {
       margin-top: 40px;
       width: 175px;
     }
+
+    .sign-up-facebook-button {
+      width: 260px;
+      font-size: 14px;
+      padding: 7px 16px;
+      color: #fff;
+      background-color: #0095f6;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      margin-bottom: 25px;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url('assets/icons/facebook_icon.png');
+        vertical-align: top;
+        margin-right: 5px;
+      }
+    }
   }
 
   .registration-sign-in {

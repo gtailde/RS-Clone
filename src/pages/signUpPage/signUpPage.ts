@@ -21,10 +21,15 @@ class SignUpPage {
       'div',
       'Зарегистрируйтесь, чтобы смотреть фото и видео ваших друзей.'
     );
-
+    const signUpFacebookButton = createHtmlElement(
+      'sign-up-facebook-button',
+      'a',
+      'Войти через Facebook'
+    ) as HTMLAnchorElement;
+    signUpFacebookButton.href = 'https://www.facebook.com';
     this.appendTo(signUpLogo, signUpHeader);
     this.appendTo(signUpDescriptions, signUpHeader);
-
+    this.appendTo(signUpFacebookButton, signUpHeader);
     this.appendTo(signUpHeader, signUp);
     this.appendTo(signUp, document.body);
   }
