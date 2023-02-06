@@ -1,5 +1,6 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
 const logo = require('../../assets/icons/insta_logo.svg');
+
 class SignUpPage {
   wrapper: HTMLElement;
 
@@ -44,6 +45,7 @@ class SignUpPage {
     this.appendTo(signInContent, signIn);
     const signUpFormBodyWrapper = createHtmlElement('sign-up-form__body-wrapper', 'div');
     const signUpFormBody = createHtmlElement('sign-up-form__body', 'form');
+    const signUpFormBodyLoginWrapper = createHtmlElement(['signUp-form-input-wrapper'], 'div');
     const signUpFormBodyLogin = createHtmlElement(
       ['signUp-form__mobile-or-email', 'signUp-form__input'],
       'input'
@@ -51,13 +53,46 @@ class SignUpPage {
     signUpFormBodyLogin.placeholder = 'Моб. телефон или эл. адрес';
     signUpFormBodyLogin.required = true;
     signUpFormBodyLogin.pattern = '^(?:\\d{10}|\\w+@\\w+\\.\\w{2,3})$';
+    signUpFormBodyLogin.oninput = (e) => {
+      const target = e.target as HTMLInputElement;
+      const regex = target.pattern;
+      if (target.value.search(regex) === -1) {
+        target.parentElement?.classList.add('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      } else {
+        target.parentElement?.classList.add('signUp-form__input--valid');
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+      }
 
+      if (String(target.value.length) === '0') {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      }
+    };
+
+    const signUpFormBodyFirstLastNameWrapper = createHtmlElement(['signUp-form-input-wrapper'], 'div');
     const signUpFormBodyFirstLastName = createHtmlElement(
       ['signUp-form__first-last-name', 'signUp-form__input'],
       'input'
     ) as HTMLInputElement;
     signUpFormBodyFirstLastName.placeholder = 'Имя и фамилия';
     signUpFormBodyFirstLastName.required = true;
+    signUpFormBodyFirstLastName.oninput = (e) => {
+      const target = e.target as HTMLInputElement;
+      if (target.value.length > 3) {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.add('signUp-form__input--valid');
+      } else {
+        target.parentElement?.classList.add('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      }
+      if (target.value === '') {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      }
+    };
+
+    const signUpFormBodyUserNameWrapper = createHtmlElement(['signUp-form-input-wrapper'], 'div');
 
     const signUpFormBodyUserName = createHtmlElement(
       ['signUp-form__username', 'signUp-form__input'],
@@ -65,7 +100,22 @@ class SignUpPage {
     ) as HTMLInputElement;
     signUpFormBodyUserName.placeholder = 'Имя пользователя';
     signUpFormBodyUserName.required = true;
+    signUpFormBodyUserName.oninput = (e) => {
+      const target = e.target as HTMLInputElement;
+      if (target.value.length > 3) {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.add('signUp-form__input--valid');
+      } else {
+        target.parentElement?.classList.add('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      }
+      if (target.value === '') {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      }
+    };
 
+    const signUpFormBodyPasswordWrapper = createHtmlElement(['signUp-form-input-wrapper'], 'div');
     const signUpFormBodyPassword = createHtmlElement(
       ['signUp-form__password', 'signUp-form__input'],
       'input'
@@ -74,6 +124,22 @@ class SignUpPage {
     signUpFormBodyPassword.type = 'password';
     signUpFormBodyPassword.pattern = '((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{3,20})';
     signUpFormBodyPassword.required = true;
+    signUpFormBodyPassword.oninput = (e) => {
+      const target = e.target as HTMLInputElement;
+      const pattern = target.pattern;
+      if (target.value.search(pattern) === -1) {
+        target.parentElement?.classList.add('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      } else {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.add('signUp-form__input--valid');
+      }
+      if (target.value === '') {
+        target.parentElement?.classList.remove('signUp-form__input--invalid');
+        target.parentElement?.classList.remove('signUp-form__input--valid');
+      }
+    };
+
     const signUpFormBodyPolicy = createHtmlElement('signUp-form__policy', 'div');
     signUpFormBodyPolicy.innerHTML = `Люди, которые пользуются нашим сервисом, могли загрузить вашу контактную информацию в Instagram. <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank">Подробнее</a>
     <br><br>
@@ -94,10 +160,14 @@ class SignUpPage {
     this.appendTo(signUpFormBodyLineRight, signUpFormBodyLineWrapper);
     this.appendTo(signUpFormBodyLineWrapper, signUpFormBody);
 
-    this.appendTo(signUpFormBodyLogin, signUpFormBody);
-    this.appendTo(signUpFormBodyFirstLastName, signUpFormBody);
-    this.appendTo(signUpFormBodyUserName, signUpFormBody);
-    this.appendTo(signUpFormBodyPassword, signUpFormBody);
+    this.appendTo(signUpFormBodyLogin, signUpFormBodyLoginWrapper);
+    this.appendTo(signUpFormBodyLoginWrapper, signUpFormBody);
+    this.appendTo(signUpFormBodyFirstLastName, signUpFormBodyFirstLastNameWrapper);
+    this.appendTo(signUpFormBodyFirstLastNameWrapper, signUpFormBody);
+    this.appendTo(signUpFormBodyUserName, signUpFormBodyUserNameWrapper);
+    this.appendTo(signUpFormBodyUserNameWrapper, signUpFormBody);
+    this.appendTo(signUpFormBodyPassword, signUpFormBodyPasswordWrapper);
+    this.appendTo(signUpFormBodyPasswordWrapper, signUpFormBody);
     this.appendTo(signUpFormBodyPolicy, signUpFormBody);
     this.appendTo(signUpFormBodyButtonSubmit, signUpFormBody);
     this.appendTo(signUpFormBody, signUpFormBodyWrapper);
