@@ -65,14 +65,6 @@ class SignUpPage {
     signUpFormBodyPassword.type = 'password';
     signUpFormBodyPassword.pattern = '^[a-zA-Z]\\w{3,14}$';
 
-    const signUpFormBodyBirthdayWrapper = createHtmlElement(['signUp-form__birthday-wrapper'], 'div');
-    const signUpFormBodyBirthdayDate = `
-    <p>
-      <label for="date">Дата рождения: </label>
-      <input type="date" id="date" name="date"/>
-    </p>`;
-    signUpFormBodyBirthdayWrapper.innerHTML = signUpFormBodyBirthdayDate;
-
     const signUpFormBodyButtonSubmit = createHtmlElement(
       ['signUp-form__submit', 'button'],
       'button',
@@ -93,7 +85,6 @@ class SignUpPage {
     this.appendTo(signUpFormBodyFirstLastName, signUpFormBody);
     this.appendTo(signUpFormBodyUserName, signUpFormBody);
     this.appendTo(signUpFormBodyPassword, signUpFormBody);
-    this.appendTo(signUpFormBodyBirthdayWrapper, signUpFormBody);
     this.appendTo(signUpFormBodyButtonSubmit, signUpFormBody);
     this.appendTo(signUpFormBody, signUpFormBodyWrapper);
     this.appendTo(signUpFormBodyWrapper, signUp);
