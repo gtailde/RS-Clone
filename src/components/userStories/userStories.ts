@@ -17,7 +17,7 @@ export default class UserStoriesComponent {
     toElem.append(elem);
   }
   draw() {
-    const target = document.body as HTMLElement;
+    const target = document.querySelector('.user-profile-wrapper') as HTMLElement;
     // const arrowLeft = createHtmlElement('user-stories-arrow--left', 'img') as HTMLImageElement;
     // const arrowRight = createHtmlElement('user-stories-arrow--right', 'img') as HTMLImageElement;
     const userStoriesItem = createHtmlElement('user-stories-item', 'div');
