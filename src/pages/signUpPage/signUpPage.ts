@@ -126,6 +126,24 @@ class SignUpPage {
     signUpFormBodyPassword.required = true;
     signUpFormBodyPassword.oninput = (e) => {
       const target = e.target as HTMLInputElement;
+      const showUnshowPassword = createHtmlElement('show-unshow-password', 'div', 'Показать');
+      if (!(target.nextElementSibling?.className === 'show-unshow-password')) {
+        target.parentElement?.append(showUnshowPassword);
+      }
+      showUnshowPassword.onclick = (e) => {
+        if (target.type === 'password') {
+          target.type = 'text';
+          showUnshowPassword.textContent = 'Скрыть';
+        } else {
+          showUnshowPassword.textContent = 'Показать';
+          target.type = 'password';
+        }
+      };
+      showUnshowPassword.style.position = 'absolute';
+      showUnshowPassword.style.top = '9px';
+      showUnshowPassword.style.right = '40px';
+      showUnshowPassword.style.fontSize = '14px';
+      showUnshowPassword.style.fontWeight = 'bold';
       const pattern = target.pattern;
       if (target.value.search(pattern) === -1) {
         target.parentElement?.classList.add('signUp-form__input--invalid');
@@ -137,6 +155,7 @@ class SignUpPage {
       if (target.value === '') {
         target.parentElement?.classList.remove('signUp-form__input--invalid');
         target.parentElement?.classList.remove('signUp-form__input--valid');
+        target.nextElementSibling?.remove();
       }
     };
 
