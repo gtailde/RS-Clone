@@ -120,6 +120,18 @@ class SignUpPage {
       ['signUp-form__password', 'signUp-form__input'],
       'input'
     ) as HTMLInputElement;
+    const signUpFormBodyPasswordRequirements = createHtmlElement(
+      ['signUp-form__password-requirements', 'signUp-form__input'],
+      'div'
+    );
+    signUpFormBodyPasswordRequirements.innerHTML = `
+    <ul style="margin: 0; padding: 0 0 0 20px">
+      <li style="list-style: none; font-size: 10px;">Требования к паролю:</li>
+
+      <li>Длина пароля от 6 до 20 символов.</li>
+      <li>Одна прописная и одна строчная буква.</li>
+    </ul>
+    `;
     signUpFormBodyPassword.placeholder = 'Пароль';
     signUpFormBodyPassword.type = 'password';
     signUpFormBodyPassword.pattern = '((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{3,20})';
@@ -186,6 +198,7 @@ class SignUpPage {
     this.appendTo(signUpFormBodyUserName, signUpFormBodyUserNameWrapper);
     this.appendTo(signUpFormBodyUserNameWrapper, signUpFormBody);
     this.appendTo(signUpFormBodyPassword, signUpFormBodyPasswordWrapper);
+    this.appendTo(signUpFormBodyPasswordRequirements, signUpFormBodyPasswordWrapper);
     this.appendTo(signUpFormBodyPasswordWrapper, signUpFormBody);
     this.appendTo(signUpFormBodyPolicy, signUpFormBody);
     this.appendTo(signUpFormBodyButtonSubmit, signUpFormBody);
