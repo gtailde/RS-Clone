@@ -69,7 +69,10 @@ class SignUpPage {
     signUpFormBodyPassword.placeholder = 'Пароль';
     signUpFormBodyPassword.type = 'password';
     signUpFormBodyPassword.pattern = '^[a-zA-Z]\\w{3,14}$';
-
+    const signUpFormBodyPolicy = createHtmlElement('signUp-form__policy', 'div');
+    signUpFormBodyPolicy.innerHTML = `Люди, которые пользуются нашим сервисом, могли загрузить вашу контактную информацию в Instagram. <a href="https://www.facebook.com/help/instagram/261704639352628" target="_blank">Подробнее</a>
+    <br><br>
+    Регистрируясь, вы принимаете наши <a href="https://help.instagram.com/581066165581870/?locale=ru_RU">Условия</a>. Прочитайте <a href="https://www.facebook.com/privacy/policy">Политику конфиденциальности</a>, чтобы узнать, как мы получаем, используем и передаем ваши данные, а также посмотрите <a href="https://help.instagram.com/1896641480634370/">Политику в отношении файлов cookie</a>, чтобы узнать, как мы используем файлы cookie и подобные технологии.`;
     const signUpFormBodyButtonSubmit = createHtmlElement(
       ['signUp-form__submit', 'button'],
       'button',
@@ -90,6 +93,7 @@ class SignUpPage {
     this.appendTo(signUpFormBodyFirstLastName, signUpFormBody);
     this.appendTo(signUpFormBodyUserName, signUpFormBody);
     this.appendTo(signUpFormBodyPassword, signUpFormBody);
+    this.appendTo(signUpFormBodyPolicy, signUpFormBody);
     this.appendTo(signUpFormBodyButtonSubmit, signUpFormBody);
     this.appendTo(signUpFormBody, signUpFormBodyWrapper);
     this.appendTo(signUpFormBodyWrapper, signUp);

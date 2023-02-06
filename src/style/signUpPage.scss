@@ -25,6 +25,8 @@ body {
     border-radius: 1px;
 
     .sign-up-form__body-wrapper {
+      width: 260px;
+      margin: 0 auto;
       .sign-up-form__body {
         display: flex;
         flex-direction: column;
@@ -39,20 +41,20 @@ body {
           .signUp-form__line-left {
             display: inline-block;
             height: 1px;
-            background-color: #8E8E8E;
+            background-color: #8e8e8e;
             width: 100%;
           }
 
           .signUp-form__line-text {
             margin: 0 4px;
             display: inline-block;
-            color: #8E8E8E;
+            color: #8e8e8e;
           }
 
           .signUp-form__line-right {
             display: inline-block;
             height: 1px;
-            background-color: #8E8E8E;
+            background-color: #8e8e8e;
             width: 100%;
           }
         }
@@ -79,6 +81,12 @@ body {
             background-color: #2c99ec;
           }
         }
+
+        .signUp-form__policy {
+          font-size: 12px;
+          text-align: center;
+          color: #8E8E8E;
+        }
       }
     }
   }
@@ -90,7 +98,7 @@ body {
       width: 260px;
       text-align: center;
       font-size: 17px;
-      color: #8E8E8E;
+      color: #8e8e8e;
       margin-bottom: 10px;
     }
     .sign-up-logo {
