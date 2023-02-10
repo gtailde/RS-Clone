@@ -52,9 +52,9 @@ class SignUpPage {
       ['signUp-form__mobile-or-email', 'signUp-form__input'],
       'input'
     ) as HTMLInputElement;
-    signUpFormBodyLogin.placeholder = 'Моб. телефон или эл. адрес';
+    signUpFormBodyLogin.placeholder = 'Эл. адрес';
     signUpFormBodyLogin.required = true;
-    signUpFormBodyLogin.pattern = '^(?:\\d{10}|\\w+@\\w+\\.\\w{2,3})$';
+    signUpFormBodyLogin.pattern = '\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
     signUpFormBodyLogin.oninput = (e) => {
       const target = e.target as HTMLInputElement;
       const regex = target.pattern;
@@ -149,7 +149,7 @@ class SignUpPage {
     signUpFormBodyPassword.oninput = (e) => {
       const target = e.target as HTMLInputElement;
       const showUnshowPassword = createHtmlElement('show-unshow-password', 'div', 'Показать');
-      if (!(target.nextElementSibling?.nextElementSibling?.className === 'show-unshow-password')) {
+      if (!(target.nextElementSibling?.className === 'show-unshow-password')) {
         target.parentElement?.append(showUnshowPassword);
       }
       showUnshowPassword.onclick = () => {
@@ -170,22 +170,22 @@ class SignUpPage {
       const regexEnLower = new RegExp('[a-z]', 'gm');
       const regexEnUpper = new RegExp('[A-Z]', 'gm');
       const pattern = target.pattern;
-      const passwordRequirements = document.querySelector('.password-requirements') as HTMLUListElement;
-      if (target.value.length >= 6 && target.value.length <= 20) {
-        const passwordRequirements = document.querySelector('.password-requirements') as HTMLUListElement;
-        passwordRequirements.firstElementChild?.nextElementSibling?.classList.add('isRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isNotRight');
-      } else {
-        passwordRequirements.firstElementChild?.nextElementSibling?.classList.add('isNotRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isRight');
-      }
-      if (target.value.search(regexEnLower) !== -1 || target.value.search(regexEnUpper) !== -1) {
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.add('isRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isNotRight');
-      } else {
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.add('isNotRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isRight');
-      }
+      // const passwordRequirements = document.querySelector('.password-requirements') as HTMLUListElement;
+      // if (target.value.length >= 6 && target.value.length <= 20) {
+      //   const passwordRequirements = document.querySelector('.password-requirements') as HTMLUListElement;
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.classList.add('isRight');
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isNotRight');
+      // } else {
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.classList.add('isNotRight');
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isRight');
+      // }
+      // if (target.value.search(regexEnLower) !== -1 || target.value.search(regexEnUpper) !== -1) {
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.add('isRight');
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isNotRight');
+      // } else {
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.add('isNotRight');
+      //   passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isRight');
+      // }
       if (
         target.value.length >= 6 &&
         target.value.length <= 20 &&
@@ -201,17 +201,17 @@ class SignUpPage {
       } else {
         target.parentElement?.classList.remove('signUp-form__input--invalid');
         target.parentElement?.classList.add('signUp-form__input--valid');
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.add('isRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isNotRight');
+        // passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.add('isRight');
+        // passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isNotRight');
       }
       if (target.value === '') {
         target.parentElement?.classList.remove('signUp-form__input--invalid');
         target.parentElement?.classList.remove('signUp-form__input--valid');
         target.nextElementSibling?.nextElementSibling?.remove();
         passwordIsValid = false;
-        passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isNotRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isNotRight');
-        passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isRight');
+        // passwordRequirements.firstElementChild?.nextElementSibling?.classList.remove('isNotRight');
+        // passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isNotRight');
+        // passwordRequirements.firstElementChild?.nextElementSibling?.nextElementSibling?.classList.remove('isRight');
       }
     };
 
@@ -227,6 +227,7 @@ class SignUpPage {
     signUpFormBodyButtonSubmit.disabled = true;
     const attention = createHtmlElement('attention', 'div');
     signUpFormBody.oninput = () => {
+      console.log(loginIsValid && firstLastNameIsValid && userNameIsValid && passwordIsValid);
       if (loginIsValid && firstLastNameIsValid && userNameIsValid && passwordIsValid) {
         signUpFormBodyButtonSubmit.disabled = false;
         signUpFormBodyButtonSubmit.classList.add('signUp-form__submit--valid');
