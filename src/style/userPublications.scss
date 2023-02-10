@@ -1,0 +1,32 @@
+.user-publications-wrapper {
+  width: 100%;
+  margin-top: 60px;
+  .user-publications {
+    border-top: 1px solid #dbdbdb;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    .user-publications__item__wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 20px 0;
+    }
+
+    .user-publications__item__wrapper--active {
+      color: #000;
+      border-top: 1px solid black;
+    }
+    .user-publications__header {
+      display: flex;
+      text-transform: uppercase;
+      gap: 60px;
+      justify-content: center;
+      font-size: 12px;
+      color: #8e8e8e;
+
+      a {
+        cursor: pointer;
+      }
+    }
+  }
+}

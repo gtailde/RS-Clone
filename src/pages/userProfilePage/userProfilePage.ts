@@ -1,15 +1,17 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
 const settings_icon = require('../../assets/icons/settings-icon.svg');
 import UserStoriesComponent from '../../components/userStories/userStories';
-
+import UserPublicationsComponent from '../../components/userPublications/userPublications';
 class UserProfilePage {
   wrapper: HTMLElement;
   // innerWrapper: HTMLElement;
   userStoriesComponent: UserStoriesComponent;
+  userPublicaitonComponent: UserPublicationsComponent;
   constructor() {
     this.wrapper = createHtmlElement('user-profile-wrapper', 'div');
     // this.innerWrapper = createHtmlElement('user-profile-inner-wrapper', 'div');
     this.userStoriesComponent = new UserStoriesComponent();
+    this.userPublicaitonComponent = new UserPublicationsComponent();
   }
 
   appendTo(elem: HTMLElement, toElem: HTMLElement) {
@@ -116,9 +118,14 @@ class UserProfilePage {
     this.userStoriesComponent.draw();
   }
 
+  renderUserPuplicationComponent() {
+    this.userPublicaitonComponent.draw();
+  }
+
   draw() {
     this.renderUserAbout();
     this.renderUserStoriesComponent();
+    this.renderUserPuplicationComponent();
   }
 }
 
