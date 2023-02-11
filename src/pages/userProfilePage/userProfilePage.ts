@@ -36,7 +36,7 @@ class UserProfilePage {
     const userAboutInfoHeaderEditButton = createHtmlElement(
       ['user-about-info__edit-button', 'button'],
       'button',
-      'Edit profile'
+      'Редактировать профиль'
     );
     const userAboutInfoHeaderSettingsButton = createHtmlElement(
       'user-about-info__settings-button',
@@ -55,7 +55,7 @@ class UserProfilePage {
     const userAboutInfoDataPublicationsText = createHtmlElement(
       'user-about-info__publications-text',
       'div',
-      'Publications'
+      'публикаций'
     );
     const userAboutInfoDataPublicationsCount = createHtmlElement(
       ['user-about-info__publications-count', 'user-about-count'],
@@ -66,7 +66,7 @@ class UserProfilePage {
     this.appendTo(userAboutInfoDataPublicationsText, userAboutInfoDataPublicationsWrapper);
 
     const userAboutInfoDataFollowersWrapper = createHtmlElement('user-about-info__followers-wrappers', 'div');
-    const userAboutInfoDataFollowersText = createHtmlElement('user-about-info__followers-text', 'div', 'Followers');
+    const userAboutInfoDataFollowersText = createHtmlElement('user-about-info__followers-text', 'div', 'подписчиков');
     const userAboutInfoDataFollowersCount = createHtmlElement(
       ['user-about-info__followers-count', 'user-about-count'],
       'span',
@@ -79,7 +79,7 @@ class UserProfilePage {
     const userAboutInfoDataSubscriptionsText = createHtmlElement(
       'user-about-info__subscriptions-text',
       'div',
-      'Subscriptions'
+      'подписок'
     );
     const userAboutInfoDataSubscriptionsCount = createHtmlElement(
       ['user-about-info__subscriptions-count', 'user-about-count'],

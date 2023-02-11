@@ -23,12 +23,13 @@ export default class UserStoriesComponent {
     const userStoriesItem = createHtmlElement('user-stories-item', 'div');
     const userStoriesItemImage = createHtmlElement('user-stories-item__image', 'img') as HTMLImageElement;
     userStoriesItemImage.src = 'https://via.placeholder.com/77';
-    const userStoriesItemText = createHtmlElement('user-stories-item__text', 'div', 'Title');
+    const userStoriesItemText = createHtmlElement('user-stories-item__text', 'div', 'Заголовок истории');
 
     const userStoriesItemAddButtonWrapper = createHtmlElement(
       ['user-stories-item', 'user-stories-item__button-wrapper'],
-      'div'
-    );
+      'a'
+    ) as HTMLAnchorElement;
+    userStoriesItemAddButtonWrapper.href = '#';
     const userStoriesAddButton = createHtmlElement(
       ['user-stories-item__image', 'user-stories-item__button'],
       'img'

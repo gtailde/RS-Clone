@@ -15,7 +15,18 @@ export default class UserPublicationsComponent {
 
   draw() {
     const target = document.querySelector('.user-profile-wrapper') as HTMLElement;
-    const UserPublications = createHtmlElement('user-publications', 'div');
+    const UserPublications = createHtmlElement('user-publications', 'div') as HTMLElement;
+    UserPublications.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.className === 'user-publications__posts__content') {
+        target.parentElement?.classList.add('user-publications__header--active');
+        target.parentElement?.nextElementSibling?.classList.remove('user-publications__header--active');
+      }
+      if (target.className === 'user-publications__saved') {
+        target.parentElement?.classList.add('user-publications__header--active');
+        target.parentElement?.previousElementSibling?.classList.remove('user-publications__header--active');
+      }
+    });
     const UserPublicationsHeader = createHtmlElement('user-publications__header', 'div');
     const UserPublicationsPosts = createHtmlElement(
       ['user-publications__posts', 'user-publications__item__wrapper'],
@@ -41,6 +52,13 @@ export default class UserPublicationsComponent {
     this.appendTo(UserPublicationsSaved, UserPublicationsHeader);
     this.appendTo(UserPublicationsHeader, UserPublications);
     this.appendTo(UserPublications, this.wrapper);
+
+    const UserPublicationsItemsWrapper = createHtmlElement('user-publications-items-wrapper', 'div');
+    const UserPublicationsItems = createHtmlElement('user-publications-items', 'div');
+    const UserPublicationsItem = createHtmlElement('user-publications-item', 'div');
+    this.appendTo(UserPublicationsItems, UserPublicationsItemsWrapper);
+    this.appendTo(UserPublicationsItem, UserPublicationsItems);
+    this.appendTo(UserPublicationsItemsWrapper, this.wrapper);
     this.appendTo(this.wrapper, target);
   }
 }

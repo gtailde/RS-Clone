@@ -28,5 +28,33 @@
         cursor: pointer;
       }
     }
+
+    .user-publications__header--active {
+      border-top: 1px solid black;
+    }
+  }
+
+  .user-publications-items-wrapper {
+    width: 100%;
+    padding: 20px;
+
+    .user-publications-items {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      .user-publications-item {
+        width: 30%;
+        max-width: 293px;
+        border: 1px solid black;
+        position: relative;
+        background: url('https://via.placeholder.com/293');
+        background-size: cover;
+        &::after {
+          content: '';
+          display: block;
+          padding-top: 100%;
+        }
+      }
+    }
   }
 }
