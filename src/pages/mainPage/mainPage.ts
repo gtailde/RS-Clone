@@ -68,7 +68,27 @@ class MainPages {
             this.appendTo(share, contentLikeCommentBookmark);
             this.appendTo(bookmark, contentLikeCommentBookmark);
             this.appendTo(contentLikeCommentBookmark, content);
+            const likeText = createHtmlElement('likeText', 'div', 'N отметок "Нравится"');
+            this.appendTo(likeText, content)
+            const description = createHtmlElement("description", 'div');
+            const namingAccountDescription = createHtmlElement('namingAccountDescription', 'p', 'NamingAccount');
+            const textDescription = createHtmlElement('textDescription', 'p', 'Description');
+            this.appendTo(namingAccountDescription, description);
+            this.appendTo(textDescription, description);
+            this.appendTo(description, content)
+            //new file with function , with data in input
+            const commentBlock = createHtmlElement('commentBlock', 'div');
+            const namingAccountcComment = createHtmlElement('namingAccountDescription', 'p', 'NamingAccount');
+            const textComment = createHtmlElement('textDescription', 'p', 'Comment');
+            this.appendTo(namingAccountcComment, commentBlock);
+            this.appendTo(textComment, commentBlock);
+            this.appendTo(commentBlock, content);
+            ////////////////////////////////////////////
+            const InputInComment = createHtmlElement('InputInComment', 'input');
+            InputInComment.setAttribute('type', 'text');
+            InputInComment.setAttribute('placeholder', 'Добавитье комментарий...')
             const lineBetween = createHtmlElement('line', 'div');
+            this.appendTo(InputInComment, content)
             this.appendTo(lineBetween, content)
         }
         this.appendTo(content, mainCentralContainerContainerWithContent)
@@ -84,12 +104,11 @@ class MainPages {
         const textInfoAboutYourAcc = createHtmlElement('textInformationNikAndName', 'div');
         const textInfoNikName = createHtmlElement('textInformationNik', 'div', 'testingAccountName')
         const textInfoName = createHtmlElement('textInformationName', 'div', 'testingName');
+        this.appendTo(textInfoNikName, textInfoAboutYourAcc);
         this.appendTo(textInfoName, textInfoAboutYourAcc);
         this.appendTo(textInfoAboutYourAcc, YourProfile)
-        this.appendTo(textInfoNikName, textInfoAboutYourAcc);
         const buttonLinkReload = createHtmlElement('buttonLinkReload', 'div', 'Переключиться');
         this.appendTo(buttonLinkReload, YourProfile);
-
         const separation = createHtmlElement('separation', 'div');
         const textRecommendation = createHtmlElement('textRecommendation', 'p', 'Рекомендации для вас');
         this.appendTo(textRecommendation, separation);
@@ -104,10 +123,6 @@ class MainPages {
             const textInfoRecNik = createHtmlElement('textInformationNik', 'div', 'testingAccountName');
             const textInfoRecName = createHtmlElement('textInformationName', 'div', 'testingName');
             const buttonLinkSubscribe = createHtmlElement('buttonLinkSubscribe', 'div', 'Подписаться');
-
-
-
-
             this.appendTo(photoRecommendationAccount, ProfileRecommendationAccount);
             this.appendTo(ProfileRecommendationAccount, recommendation);
             this.appendTo(recommendation, rightContainer);
@@ -128,21 +143,21 @@ class MainPages {
         const languange = createHtmlElement('textBlockNothing', 'p', 'Язык');
         const dot = createHtmlElement('textBlockNothing', 'p', '·');
         this.appendTo(Information, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(Help, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(Press, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(API, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(Work, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(Konfidencial, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(conditions, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(place, blockWithInfo);
-        this.appendTo(dot, blockWithInfo);
+        // this.appendTo(dot, blockWithInfo);
         this.appendTo(languange, blockWithInfo);
         this.appendTo(blockWithInfo, this.Container)
         const elementWithInfoAboutCreators = createHtmlElement('from', 'p', '©2023 INSTAGRAM FROM FIRETEAM')

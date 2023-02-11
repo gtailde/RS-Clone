@@ -21,9 +21,6 @@ class leftBlockWithAnyPages {
         const blockWithInterestingPost = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
         const iconInterestingPost = createHtmlElement(['png', 'main-blockWithPages__PngInterestingPage'], 'div');
         const textInterestingPost = createHtmlElement('textMain', 'p', 'Интересное');
-        const blockWithReals = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
-        const iconReals = createHtmlElement(['png', 'main-blockWithPages__PngReelsPage'], 'div');
-        const textReals = createHtmlElement('textMain', 'p', 'Reels');
         const blockWithMessage = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
         const iconMessage = createHtmlElement(['png', 'main-blockWithPages__PngMessagePage'], 'div');
         const textMessage = createHtmlElement('textMain', 'p', 'Сообщения');
@@ -55,14 +52,9 @@ class leftBlockWithAnyPages {
         this.appendTo(textMessage, blockWithMessage)
         this.appendTo(iconInterestingPost, blockWithInterestingPost);
         this.appendTo(textInterestingPost, blockWithInterestingPost);
-        this.appendTo(iconReals, blockWithReals);
-        this.appendTo(textReals, blockWithReals);
-
-
         this.appendTo(blockWithMain, blockWithPages)
         this.appendTo(blockWithSearch, blockWithPages);
         this.appendTo(blockWithInterestingPost, blockWithPages)
-        this.appendTo(blockWithReals, blockWithPages)
         this.appendTo(blockWithMessage, blockWithPages);
         this.appendTo(blockWithNotification, blockWithPages);
         this.appendTo(blockWithCreate, blockWithPages);
