@@ -1,2 +1,3 @@
 @import "./style/header.css";
 @import "./style/signUpPage.scss";
+@import './style/authorizationPage.scss'
