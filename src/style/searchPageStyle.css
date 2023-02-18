@@ -1,0 +1,149 @@
+.lineInput {
+    background-color: black;
+    color: white;
+    height: 1px;
+    border: none;
+    margin-top: 35px;
+    width: 100%;
+    padding: 0px;
+}
+
+.inputClearSearch {
+    width: 10px;
+    /* Ширина кнопки */
+    height: 10px;
+    margin-top: 50%;
+    margin-left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    /* Высота кнопки */
+    border: none;
+    /* Убираем рамку */
+    background: url(../assets/icons/free-icon-cancel-3482248.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.searchModalWindow {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    width: 400px;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+    font-size: 18px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.searchModalWindow__active {
+    display: none;
+}
+
+.inputTextSearch {
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(196, 191, 191);
+    padding-left: 15px;
+    font-size: 18px;
+    border-radius: 15px;
+    vertical-align: middle;
+}
+
+.nameSearchMenu {
+    color: black;
+}
+
+.textwhen {
+    color: black;
+}
+
+.findingPeople {
+    display: none;
+}
+
+.findingPeople__active {
+    display: block;
+    width: 100%;
+    height: 75%;
+    overflow: overlay;
+}
+
+.textBlockWithTimingAndClear {
+    display: flex;
+}
+
+.textWithClearAll {
+    color: blue;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.cancleButton {
+    position: relative;
+    margin-top: -35px;
+    margin-left: auto;
+    width: 20px;
+    /* Ширина кнопки */
+    height: 20px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.recProfSetting {
+    display: flex;
+    width: 100%;
+}
+
+.awatarProfileAccount {
+    width: 50px;
+    height: 50px;
+    border: 50%;
+    background: url(../assets/icons/profile.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.nameProfileAccountSearch {
+    font-size: 16px;
+    margin-bottom: -10px;
+    color: black;
+    cursor: pointer;
+}
+
+.SecondNamingProfAcc {
+    font-size: 14px;
+    color: gray;
+    cursor: pointer;
+}
+
+.textOnRecProfileAccount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10px;
+}
+
+.cancleButtonRecommended {
+    width: 30px;
+    height: 30px;
+    background: url(../assets/icons/free-icon-cancel-3482248.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.profileRecommend {
+    width: 100%;
+    height: 70%;
+    display: flex;
+}

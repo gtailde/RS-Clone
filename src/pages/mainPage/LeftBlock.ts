@@ -14,7 +14,7 @@ class leftBlockWithAnyPages {
         const blockWithPages = createHtmlElement('main-blockWithPages', 'div');
         const blockWithMain = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
         const iconMain = createHtmlElement('main-blockWithPages__PngMainPage__active', 'div');
-        const textMain = createHtmlElement('textMain__active', 'p', 'Главная');
+        const textMain = createHtmlElement('textMain __active', 'p', 'Главная');
         const blockWithSearch = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
         const iconSearch = createHtmlElement(['png', 'main-blockWithPages__PngSearchPage'], 'div');
         const textSearch = createHtmlElement('textMain', 'p', 'Поисковой запрос');
@@ -65,9 +65,21 @@ class leftBlockWithAnyPages {
         this.appendTo(iconAboutWrapper, this.wrapper)
         this.appendTo(blockWithPages, this.wrapper)
     }
+    // handler = () => {
+    //     const checker = document.querySelectorAll('.textMain');
+    //     console.log(checker);
+    //     var ell;
+    //     checker.forEach(el => {
+    //         if (el.classList.contains('__active')) {
+    //             ell = el;
+
+    //         }
+    //     })
+    //     console.log(ell)
+    // }
     draw() {
         this.renderInstagramLeftBlock();
-
+        // this.handler()
     }
 }
 const drawLeftBlock = new leftBlockWithAnyPages();
