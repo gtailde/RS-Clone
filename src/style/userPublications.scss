@@ -7,6 +7,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     .user-publications__item__wrapper {
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 5px;
       padding: 20px 0;
@@ -36,7 +37,7 @@
 
   .user-publications-items-wrapper {
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 5px;
 
     .user-publications-items {
       display: flex;
@@ -44,7 +45,6 @@
       flex-wrap: wrap;
       .user-publications-item {
         width: 30%;
-        max-width: 293px;
         border: 1px solid black;
         position: relative;
         background: url('https://via.placeholder.com/293');
