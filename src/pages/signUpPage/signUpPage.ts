@@ -52,12 +52,13 @@ class SignUpPage {
       ['signUp-form__mobile-or-email', 'signUp-form__input'],
       'input'
     ) as HTMLInputElement;
-    signUpFormBodyLogin.placeholder = 'Эл. адрес';
+    signUpFormBodyLogin.placeholder = 'Эл. адрес или номер телефона';
     signUpFormBodyLogin.required = true;
-    signUpFormBodyLogin.pattern = '\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$';
     signUpFormBodyLogin.oninput = (e) => {
       const target = e.target as HTMLInputElement;
       const regex = target.pattern;
+      const value = target.value;
+
       if (target.value.search(regex) === -1) {
         target.parentElement?.classList.add('signUp-form__input--invalid');
         target.parentElement?.classList.remove('signUp-form__input--valid');
@@ -226,13 +227,33 @@ class SignUpPage {
     ) as HTMLInputElement;
     signUpFormBodyButtonSubmit.disabled = true;
     const attention = createHtmlElement('attention', 'div');
-    signUpFormBody.oninput = () => {
+    signUpFormBody.oninput = (e) => {
       console.log(loginIsValid && firstLastNameIsValid && userNameIsValid && passwordIsValid);
       if (loginIsValid && firstLastNameIsValid && userNameIsValid && passwordIsValid) {
         signUpFormBodyButtonSubmit.disabled = false;
         signUpFormBodyButtonSubmit.classList.add('signUp-form__submit--valid');
       }
     };
+
+    // Действия при оправки формы
+    signUpFormBodyButtonSubmit.addEventListener('click', (e) => {
+      e.preventDefault();
+      const userData = {
+        username: signUpFormBodyUserName.value,
+        name: signUpFormBodyFirstLastName.value,
+        email: signUpFormBodyLogin.value,
+        password: signUpFormBodyPassword.value,
+      };
+
+      fetch('https://rs-clone-server-production-8682.up.railway.app/basicRouts/registration', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => response.json())
+        .then(() => alert(`Успешная регистрация. Добро пожаловать ${userData.username}`))
+        .catch((error) => console.error(error));
+    });
     const signUpFormBodyLineWrapper = createHtmlElement('signUp-form__line-wrapper', 'div');
     const signUpFormBodyLineLeft = createHtmlElement('signUp-form__line-left', 'div');
     const signUpFormBodyLineText = createHtmlElement('signUp-form__line-text', 'div', 'ИЛИ');
