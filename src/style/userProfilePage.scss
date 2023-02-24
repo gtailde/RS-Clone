@@ -12,7 +12,7 @@ body {
 .user-profile-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
 }
 
@@ -23,9 +23,15 @@ body {
   display: flex;
   justify-content: center;
   padding: 30px 20px 0 20px;
+  @media screen and (max-width: 769px) {
+    width: 100%;
+  }
 
   .user-about-image-wrapper {
     margin: 30px 100px;
+    @media screen and (max-width: 769px) {
+      margin: 30px 50px;
+    }
     .user-about-image {
       border-radius: 50%;
     }
@@ -87,7 +93,7 @@ body {
 
       .user-about-info__profession {
         font-size: 13px;
-        color: #8E8E8E;
+        color: #8e8e8e;
       }
     }
   }

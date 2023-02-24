@@ -5,6 +5,9 @@ const likedIcon = require('../../assets/icons/liked-icon.svg');
 const commentIcon = require('../../assets/icons/comment-icon.svg');
 const smileIcon = require('../../assets/icons/smile-icon.svg');
 const dotsIcon = require('../../assets/icons/dots-icon.svg');
+import drawLeftBlock from '../../pages/mainPage/LeftBlock';
+import drawFooter from '../../pages/mainPage/footer';
+
 export default class UserPublicationsComponent {
   wrapper: HTMLElement;
 
@@ -140,5 +143,7 @@ export default class UserPublicationsComponent {
     this.appendTo(UserPublicationsItem, UserPublicationsItems);
     this.appendTo(UserPublicationsItemsWrapper, this.wrapper);
     this.appendTo(this.wrapper, target);
+    drawLeftBlock.draw();
+    drawFooter.draw();
   }
 }

@@ -67,7 +67,6 @@ class leftBlockWithAnyPages {
     }
     draw() {
         this.renderInstagramLeftBlock();
-
     }
 }
 const drawLeftBlock = new leftBlockWithAnyPages();

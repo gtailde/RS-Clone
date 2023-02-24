@@ -41,6 +41,12 @@ a {
     display: flex;
     flex-direction: column;
     position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: white;
+    width: 15%;
+    border-right: 1px solid #ccc;
 }
 
 .left-Container__logoContainer {
