@@ -1,0 +1,203 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.sign-up-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+  font-family: 'Segoe UI';
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .sign-up {
+    width: 350px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 1px;
+
+    .sign-up-form__body-wrapper {
+      width: 260px;
+      margin: 0 auto;
+      .sign-up-form__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        .signUp-form__line-wrapper {
+          width: 260px;
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+
+          .signUp-form__line-left {
+            display: inline-block;
+            height: 1px;
+            background-color: #8e8e8e;
+            width: 100%;
+          }
+
+          .signUp-form__line-text {
+            margin: 0 4px;
+            display: inline-block;
+            color: #8e8e8e;
+          }
+
+          .signUp-form__line-right {
+            display: inline-block;
+            height: 1px;
+            background-color: #8e8e8e;
+            width: 100%;
+          }
+        }
+
+        .signUp-form__input--invalid {
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url('assets/icons/incorrect.png') center;
+            position: absolute;
+            right: 15px;
+            top: 9px;
+          }
+          position: relative;
+        }
+
+        .signUp-form__input--valid {
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url('assets/icons/correct.png') center;
+            position: absolute;
+            background-size: cover;
+            right: 15px;
+            top: 9px;
+          }
+          position: relative;
+        }
+
+        .signUp-form__input {
+          width: 260px;
+          border: 1px solid rgb(219, 219, 219);
+          background-color: #fafafa;
+          font-size: 11px;
+          padding: 12px 0 11px 8px;
+          border-radius: 1px;
+          &:focus {
+            outline: 1px solid rgb(113, 113, 113);
+          }
+        }
+
+        .signUp-form__submit {
+          border: none;
+          border-radius: 5px;
+          background-color: #47afff;
+          color: #fff;
+          font-weight: bold;
+          padding: 10px 0;
+          width: 260px;
+          margin-bottom: 20px;
+        }
+
+        .isRight {
+          color: green;
+        }
+
+        .isNotRight {
+          color: red;
+        }
+        .signUp-form__submit--valid {
+          cursor: pointer;
+          background-color: #0095f6;
+
+          &:hover {
+            background-color: rgb(24, 119, 242);
+          }
+        }
+
+        .signUp-form__policy {
+          font-size: 12px;
+          text-align: center;
+          color: #8e8e8e;
+
+          a {
+            text-decoration: none;
+            color: #00376b;
+          }
+        }
+      }
+    }
+  }
+  .sign-up-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .sign-up-descriptions {
+      width: 260px;
+      text-align: center;
+      font-size: 17px;
+      color: #8e8e8e;
+      margin-bottom: 10px;
+    }
+    .sign-up-logo {
+      margin-top: 40px;
+      width: 175px;
+    }
+
+    .sign-up-facebook-button {
+      width: 260px;
+      font-size: 14px;
+      padding: 7px 16px;
+      color: #fff;
+      background-color: #0095f6;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      margin-bottom: 25px;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url('assets/icons/facebook_icon.png');
+        vertical-align: top;
+        margin-right: 5px;
+      }
+
+      &:hover {
+        background-color: #016fb9;
+      }
+    }
+  }
+
+  .registration-sign-in {
+    width: 350px;
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid rgb(219, 219, 219);
+    margin-top: 20px;
+    border-radius: 1px;
+    .registration-sign-in__content {
+      margin: 15px;
+    }
+    a {
+      color: rgb(0, 149, 246);
+      text-decoration: none;
+    }
+  }
+}
