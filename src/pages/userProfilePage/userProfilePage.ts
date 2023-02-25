@@ -2,12 +2,15 @@ import { createHtmlElement } from '../../utils/createHtmlElement';
 const settings_icon = require('../../assets/icons/settings-icon.svg');
 import UserStoriesComponent from '../../components/userStories/userStories';
 import UserPublicationsComponent from '../../components/userPublications/userPublications';
+import { getApi } from '../../components/api/api';
 class UserProfilePage {
   wrapper: HTMLElement;
   // innerWrapper: HTMLElement;
   userStoriesComponent: UserStoriesComponent;
   userPublicaitonComponent: UserPublicationsComponent;
-  constructor() {
+  id: string;
+  constructor(id: string) {
+    this.id = id;
     this.wrapper = createHtmlElement('user-profile-wrapper', 'div');
     // this.innerWrapper = createHtmlElement('user-profile-inner-wrapper', 'div');
     this.userStoriesComponent = new UserStoriesComponent();
@@ -32,7 +35,10 @@ class UserProfilePage {
     const userAboutInfoWrapper = createHtmlElement('user-about-info', 'div');
     const userAboutInfoHeader = createHtmlElement('user-about-info__header', 'div');
     this.appendTo(userAboutInfoHeader, userAboutInfoWrapper);
-    const userAboutInfoHeaderUserName = createHtmlElement('user-about-info__username', 'div', 'username');
+    const userAboutInfoHeaderUserName = createHtmlElement('user-about-info__username', 'div');
+    getApi.getDataFromUser(this.id).then((result) => {
+      userAboutInfoHeaderUserName.innerHTML = result.username;
+    });
     const userAboutInfoHeaderEditButton = createHtmlElement(
       ['user-about-info__edit-button', 'button'],
       'button',
@@ -128,6 +134,4 @@ class UserProfilePage {
     this.renderUserPuplicationComponent();
   }
 }
-
-const implementsUserProfilePage = new UserProfilePage();
-export default implementsUserProfilePage;
+export default UserProfilePage;
