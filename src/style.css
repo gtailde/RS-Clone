@@ -1,3 +1,8 @@
-/* @import "./style/header.css"; */
+@import "./style/header.css";
+@import "./style/styleMainPages.css";
+@import "./style/userProfilePage.scss";
+@import "./style/userStories.scss";
+@import "./style/userPublications.scss";
+@import "./style/userPost.scss";
 @import "./style/signUpPage.scss";
 @import './style/authorizationPage.scss'
