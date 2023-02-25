@@ -1,5 +1,5 @@
-class Api{
-  public async newUser(username: string, password: string, name?: string, email?: string){
+class Api {
+  public async newUser(username: string, password: string, name?: string, email?: string) {
     const res = await fetch("https://rs-clone-server-production-8682.up.railway.app/basicRouts/registration", {
       method: 'POST',
       body: JSON.stringify({
@@ -15,7 +15,7 @@ class Api{
     return await res.json();
   }
 
-  public async login( password: string, username?: string, name?: string, email?: string){
+  public async login(password: string, username?: string, name?: string, email?: string) {
     const res = await fetch("https://rs-clone-server-production-8682.up.railway.app/basicRouts/login", {
       method: 'POST',
       body: JSON.stringify({
@@ -31,7 +31,7 @@ class Api{
     return await res.json();
   }
 
-  public async checkAcces(token: string){
+  public async checkAcces(token: string) {
     const res = await fetch("https://rs-clone-server-production-8682.up.railway.app/basicRouts/check", {
       method: 'POST',
       headers: {
@@ -42,20 +42,20 @@ class Api{
     return await res.json();
   }
 
-  public async getDataFromUser(id: string){
+  public async getDataFromUser(id: string) {
     const res = await fetch("https://rs-clone-server-production-8682.up.railway.app/basicRouts/getUser", {
       method: 'POST',
       body: JSON.stringify({
         '_id': id,
-       }),
+      }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
     return await res.json();
   }
-  
-  public async updateUser(id: string, password?: string, username?: string, name?: string, email?: string){
+
+  public async updateUser(id: string, password?: string, username?: string, name?: string, email?: string) {
     const res = await fetch("https://rs-clone-server-production-8682.up.railway.app/basicRouts/update", {
       method: 'POST',
       body: JSON.stringify({
@@ -64,7 +64,7 @@ class Api{
         email: email === '' || email !== undefined ? email : undefined,
         name: name ? name : "",
         password: password ? password : '',
-       }),
+      }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -72,12 +72,12 @@ class Api{
     return await res.json();
   }
 
-  public async deleteUser(id: string){
+  public async deleteUser(id: string) {
     const res = await fetch("https://rs-clone-server-production-8682.up.railway.app/basicRouts/deleteUser", {
       method: 'POST',
       body: JSON.stringify({
         '_id': id,
-       }),
+      }),
       headers: {
         'Content-Type': 'application/json',
       },

@@ -1,4 +1,5 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
+import implementsAuthorizationPage from '../authorizationPage/authorizationPage';
 const logo = require('../../assets/icons/insta_logo.svg');
 
 class SignUpPage {
@@ -244,14 +245,22 @@ class SignUpPage {
         email: signUpFormBodyLogin.value,
         password: signUpFormBodyPassword.value,
       };
+      window.localStorage.setItem('userData', JSON.stringify(userData));
 
       fetch('https://rs-clone-server-production-8682.up.railway.app/basicRouts/registration', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData),
+        body: JSON.stringify(JSON.parse(window.localStorage.getItem('userData')!)),
       })
-        .then((response) => response.json())
-        .then(() => alert(`Успешная регистрация. Добро пожаловать ${userData.username}`))
+        .then((response) => {
+          response.json();
+          console.log(response.status);
+        })
+        .then((result) => {
+          alert(result);
+          document.body.innerHTML = '';
+          implementsAuthorizationPage.draw();
+        })
         .catch((error) => console.error(error));
     });
     const signUpFormBodyLineWrapper = createHtmlElement('signUp-form__line-wrapper', 'div');

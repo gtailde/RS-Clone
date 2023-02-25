@@ -1,6 +1,7 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
 const logo = require('../../assets/icons/insta_logo.svg');
 const bg = require('../../assets/img/bg.png');
+import { getApi } from '../../components/api/api';
 
 class AuthorizationPage {
   wrapper: HTMLElement;
@@ -65,6 +66,18 @@ class AuthorizationPage {
     ) as HTMLButtonElement;
     authorizationFormBodyLogIn.type = 'submit';
 
+    authorizationFormBodyLogIn.addEventListener('click', (e) => {
+      const userData = {
+        username: authorizationFormBodyLogin.value,
+        password: authorizationFormBodyPassword.value,
+      };
+
+      e.preventDefault();
+      getApi
+        .login(userData.password, userData.username)
+        .then((result) => window.localStorage.setItem('userDataAccess', JSON.stringify(result)));
+    });
+    // });
     const authorizationFormBodyLineWrapper = createHtmlElement('authorization-form__line-wrapper', 'div');
     const authorizationFormBodyLineLeft = createHtmlElement('authorization-form__line-left', 'div');
     const authorizationFormBodyLineText = createHtmlElement('authorization-form__line-text', 'div', 'ИЛИ');
