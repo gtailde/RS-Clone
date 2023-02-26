@@ -8,6 +8,7 @@ import grayback from "./grayBack";
 import message from "./messagePage";
 import cg from "./pageWithAddPosts";
 import menuNotif from "./notificationsPage";
+import exportSettings from "./settingsMenu";
 class MainPages {
     wrapperContainer: HTMLElement;
     Container: HTMLElement;
@@ -41,7 +42,7 @@ class MainPages {
         const mainCentralContainerContainerWithContent = createHtmlElement('mainCentralContainer__ContainerWithContent', 'div');
         this.appendTo(mainCentralContainerContainerWithContent, this.Container)
         const content = createHtmlElement('Content', 'div');
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 1; i++) {
             const HeaderPartBlockContent = createHtmlElement('Content__HeaderPart', 'div');
             this.appendTo(HeaderPartBlockContent, content);
             const borderProfileAvatarContent = createHtmlElement('borderProfileGradient', 'div');
@@ -181,8 +182,8 @@ class MainPages {
     }
     handler = (e: Event): void => {
         let target = e.target as HTMLElement;
-        const textMain = document.querySelectorAll('.textMain.__active');
-        console.log(textMain)
+        // const textMain = document.querySelectorAll('.textMain.__active');
+        // console.log(textMain)
         if (target.classList.contains("HeaderPart__dots")) {
             grayback.wrapperBlock.classList.remove('graybackground')
             grayback.wrapperBlock.classList.add('graybackground__active');
@@ -193,67 +194,68 @@ class MainPages {
             grayback.draw();
             ch.draw();
         }
-        if (target.classList.contains('main-blockWithPages__blockWithMainSearchAndOthersPages')) {
+        // if (target.classList.contains('main-blockWithPages__blockWithMainSearchAndOthersPages')) {
 
-            if (target.innerText === "Сообщения") {
-                textMain[0].classList.remove('__active')
-                message.draw();
-                this.Container.innerHTML = ""
-                target.removeEventListener('click', this.handler);
-                target.children[1].classList.add('__active')
-            }
-            if (target.innerText === "Создать") {
-                textMain[0].classList.remove('__active')
-                target.classList.add('__active');
-                target.removeEventListener('click', this.handler);
-                drawFooter.wrapper.innerHTML = "";
-                header.wrapper.innerHTML = "";
-                drawLeftBlock.wrapper.innerHTML = "";
-                this.Container.innerHTML = "";
-                message.wrapperBlockMessagePage.innerHTML = ""
-                message.MainBlockWithHistory.innerHTML = "";
-                message.MainBlockWithHistory.remove();
-                message.wrapperBlockMessagePage.remove()
-                this.draw();
-                target.children[1].classList.add('__active');
-                grayback.wrapperBlock.classList.remove('graybackground')
-                grayback.wrapperBlock.classList.add('graybackground__active');
-                cg.wrapperBlock.innerHTML = ""
-                grayback.remove.classList.add('removeIcon_active');
-                grayback.remove.classList.remove('removeIcon');
-                cg.wrapperBlock.classList.remove('blockAddPost__active');
-                cg.wrapperBlock.classList.add('blockAddPost');
-                grayback.draw();
-                cg.draw();
+        //     if (target.innerText === "Сообщения") {
+        //         target.classList.remove('__active')
+        //         message.draw();
+        //         this.Container.innerHTML = ""
+        //         target.removeEventListener('click', this.handler);
+        //         target.children[1].classList.add('__active')
+        //     }
+        //     if (target.innerText === "Создать") {
+        //         target.classList.remove('__active')
+        //         target.classList.add('__active');
+        //         target.removeEventListener('click', this.handler);
+        //         drawFooter.wrapper.innerHTML = "";
+        //         header.wrapper.innerHTML = "";
+        //         drawLeftBlock.wrapper.innerHTML = "";
+        //         this.Container.innerHTML = "";
+        //         message.wrapperBlockMessagePage.innerHTML = ""
+        //         message.MainBlockWithHistory.innerHTML = "";
+        //         message.MainBlockWithHistory.remove();
+        //         message.wrapperBlockMessagePage.remove()
+        //         this.draw();
+        //         target.children[1].classList.add('__active');
+        //         grayback.wrapperBlock.classList.remove('graybackground')
+        //         grayback.wrapperBlock.classList.add('graybackground__active');
+        //         cg.wrapperBlock.innerHTML = ""
+        //         grayback.remove.classList.add('removeIcon_active');
+        //         grayback.remove.classList.remove('removeIcon');
+        //         cg.wrapperBlock.classList.remove('blockAddPost__active');
+        //         cg.wrapperBlock.classList.add('blockAddPost');
+        //         grayback.draw();
+        //         cg.draw();
 
-            }
-        }
+        //     }
+        // }
         if (target.classList.contains('textMain')) {
 
             if (target.innerHTML === "Сообщения") {
-                textMain[0].classList.remove('__active')
-                target.classList.add('__active');
+
+                // target.classList.add('__active');
                 target.removeEventListener('click', this.handler);
                 message.wrapperBlockMessagePage.innerHTML = ""
                 message.MainBlockWithHistory.innerHTML = "";
                 this.Container.innerHTML = ""
                 message.draw();
+
                 window.location.hash = "message"
 
             }
             if (target.innerHTML === "Создать") {
-                // textMain[0].classList.remove('__active')
-                target.classList.add('__active');
+                // clear()
+                // target.classList.add('__active');
 
-                drawFooter.wrapper.innerHTML = "";
-                header.wrapper.innerHTML = "";
-                drawLeftBlock.wrapper.innerHTML = "";
-                this.Container.innerHTML = "";
-                message.wrapperBlockMessagePage.innerHTML = ""
-                message.MainBlockWithHistory.innerHTML = "";
-                message.MainBlockWithHistory.remove();
-                message.wrapperBlockMessagePage.remove()
-                this.draw();
+                // drawFooter.wrapper.innerHTML = "";
+                // header.wrapper.innerHTML = "";
+                // drawLeftBlock.wrapper.innerHTML = "";
+                // this.Container.innerHTML = "";
+                // message.wrapperBlockMessagePage.innerHTML = ""
+                // message.MainBlockWithHistory.innerHTML = "";
+                // message.MainBlockWithHistory.remove();
+                // message.wrapperBlockMessagePage.remove()
+                // this.draw();
                 grayback.wrapperBlock.classList.remove('graybackground')
                 grayback.wrapperBlock.classList.add('graybackground__active');
                 cg.wrapperBlock.innerHTML = ""
@@ -263,14 +265,12 @@ class MainPages {
                 cg.wrapperBlock.classList.add('blockAddPost');
                 grayback.draw();
                 menuNotif.wrapperNotificationPages.innerHTML = "";
-                menuNotif.wrapperNotificationPages.classList.add('notification__action');
+                menuNotif.wrapperNotificationPages.classList.add('notification__active');
                 menuNotif.wrapperNotificationPages.classList.remove('notification');
-                grayback.wrapperBlock.classList.add('graybackground')
-                grayback.wrapperBlock.classList.remove('graybackground__not')
+                grayback.wrapperBlock.classList.remove('graybackground__not');
                 menuNotif.wrapperNotificationPages.remove();
                 cx.wrapperSearchPage.innerHTML = "";
-
-                cx.wrapperSearchPage.classList.add('searchModalWindow__action');
+                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
                 cx.wrapperSearchPage.classList.remove('searchModalWindow');
                 cx.wrapperSearchPage.remove();
                 window.location.hash = "create"
@@ -279,60 +279,65 @@ class MainPages {
             }
             if (target.innerHTML === "Уведомления") {
                 // textMain[0].classList.remove('__active')
-                target.classList.add('__active');
-
+                // target.classList.add('textMain__active');
+                // target.classList.remove('textMain');
                 grayback.draw();
                 grayback.wrapperBlock.classList.add('graybackground__not');
-
-                grayback.wrapperBlock.classList.remove('graybackground__active');
-                drawFooter.wrapper.innerHTML = "";
-                header.wrapper.innerHTML = "";
-                drawLeftBlock.wrapper.innerHTML = "";
-                this.Container.innerHTML = "";
-                this.draw();
                 grayback.wrapperBlock.classList.remove('graybackground');
-                message.wrapperBlockMessagePage.innerHTML = ""
-                message.MainBlockWithHistory.innerHTML = "";
-                message.MainBlockWithHistory.remove();
-                message.wrapperBlockMessagePage.remove();
+                grayback.wrapperBlock.classList.remove('graybackground__active');
+                // drawFooter.wrapper.innerHTML = "";
+                // header.wrapper.innerHTML = "";
+                // drawLeftBlock.wrapper.innerHTML = "";
+                // this.Container.innerHTML = "";
+                // this.draw();
+                grayback.wrapperBlock.classList.remove('graybackground');
+                // message.wrapperBlockMessagePage.innerHTML = ""
+                // message.MainBlockWithHistory.innerHTML = "";
+                // message.MainBlockWithHistory.remove();
+                // message.wrapperBlockMessagePage.remove();
                 menuNotif.wrapperNotificationPages.innerHTML = ""
-                menuNotif.wrapperNotificationPages.classList.remove('notification__action');
+                if (menuNotif.wrapperNotificationPages.classList.contains('notification__active')) {
+                    menuNotif.wrapperNotificationPages.classList.remove('notification__active')
+                }
+                // menuNotif.wrapperNotificationPages.classList.remove('notification__active');
                 menuNotif.wrapperNotificationPages.classList.add('notification')
                 menuNotif.draw()
                 target.removeEventListener('click', this.handler);
                 window.location.hash = "notification";
             }
             if (target.innerHTML === "Поисковой запрос") {
-                target.classList.add('__active');
+                // target.classList.add('__active');
                 menuNotif.wrapperNotificationPages.innerHTML = "";
-                menuNotif.wrapperNotificationPages.classList.add('notification__action');
+                menuNotif.wrapperNotificationPages.classList.add('notification__active');
                 menuNotif.wrapperNotificationPages.classList.remove('notification');
                 menuNotif.wrapperNotificationPages.remove();
                 cx.wrapperSearchPage.innerHTML = "";
 
-                cx.wrapperSearchPage.classList.add('searchModalWindow__action');
-                cx.wrapperSearchPage.classList.remove('searchModalWindow');
-                cx.wrapperSearchPage.remove();
+                // cx.wrapperSearchPage.classList.add('searchModalWindow__active');
+                // cx.wrapperSearchPage.classList.remove('searchModalWindow');
+                // cx.wrapperSearchPage.remove();
                 grayback.draw();
-                drawFooter.wrapper.innerHTML = "";
-                header.wrapper.innerHTML = "";
-                drawLeftBlock.wrapper.innerHTML = "";
-                this.Container.innerHTML = "";
-                this.draw();
-                grayback.wrapperBlock.classList.add('graybackground');
-                message.wrapperBlockMessagePage.innerHTML = ""
-                message.MainBlockWithHistory.innerHTML = "";
-                message.MainBlockWithHistory.remove();
-                message.wrapperBlockMessagePage.remove();
+                // drawFooter.wrapper.innerHTML = "";
+                // header.wrapper.innerHTML = "";
+                // drawLeftBlock.wrapper.innerHTML = "";
+                // this.Container.innerHTML = "";
+                // this.draw();
+                grayback.wrapperBlock.classList.add('graybackground__not');
+                grayback.wrapperBlock.classList.remove('graybackground__active');
+                grayback.wrapperBlock.classList.remove('graybackground');
+                // message.wrapperBlockMessagePage.innerHTML = ""
+                // message.MainBlockWithHistory.innerHTML = "";
+                // message.MainBlockWithHistory.remove();
+                // message.wrapperBlockMessagePage.remove();
                 cx.wrapperSearchPage.innerHTML = ""
-                cx.wrapperSearchPage.classList.remove('searchModalWindow__action');
+                cx.wrapperSearchPage.classList.remove('searchModalWindow__active');
                 cx.wrapperSearchPage.classList.add('searchModalWindow')
                 cx.draw();
                 target.removeEventListener('click', this.handler);
                 window.location.hash = "search";
             }
             if (target.innerHTML === "Главная") {
-                target.classList.add('__active');
+                // target.classList.add('__active');
                 target.removeEventListener('click', this.handler);
                 drawFooter.wrapper.innerHTML = "";
                 header.wrapper.innerHTML = "";
@@ -346,8 +351,28 @@ class MainPages {
                 message.MainBlockWithHistory.remove();
                 message.wrapperBlockMessagePage.remove();
                 cx.wrapperSearchPage.innerHTML = ""
-                cx.wrapperSearchPage.classList.add('searchModalWindow__action');
+                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
                 cx.wrapperSearchPage.classList.remove('searchModalWindow')
+            }
+            if (target.innerHTML === "Ещё") {
+                target.removeEventListener('click', this.handler);
+                message.wrapperBlockMessagePage.innerHTML = ""
+                message.MainBlockWithHistory.innerHTML = "";
+                message.MainBlockWithHistory.remove();
+                message.wrapperBlockMessagePage.remove();
+                cx.wrapperSearchPage.innerHTML = ""
+                // grayback.draw();
+                // grayback.wrapperBlock.classList.add('graybackground__not');
+                // grayback.wrapperBlock.classList.remove('graybackground__active');
+                // grayback.wrapperBlock.classList.remove('graybackground');
+                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
+                cx.wrapperSearchPage.classList.remove('searchModalWindow');
+
+                exportSettings.wrapperSetting.classList.add('wrapperSetting__active');
+                exportSettings.wrapperSetting.classList.remove('wrapperSetting');
+                exportSettings.draw();
+
+
             }
         }
 

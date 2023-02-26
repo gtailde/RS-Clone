@@ -14,7 +14,7 @@ class leftBlockWithAnyPages {
         const blockWithPages = createHtmlElement('main-blockWithPages', 'div');
         const blockWithMain = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
         const iconMain = createHtmlElement('main-blockWithPages__PngMainPage__active', 'div');
-        const textMain = createHtmlElement('textMain __active', 'p', 'Главная');
+        const textMain = createHtmlElement('textMain', 'p', 'Главная');
         const blockWithSearch = createHtmlElement('main-blockWithPages__blockWithMainSearchAndOthersPages', 'div');
         const iconSearch = createHtmlElement(['png', 'main-blockWithPages__PngSearchPage'], 'div');
         const textSearch = createHtmlElement('textMain', 'p', 'Поисковой запрос');

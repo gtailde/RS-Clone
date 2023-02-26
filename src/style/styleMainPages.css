@@ -30,6 +30,10 @@ a {
 .left-Container {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 18vw;
     position: fixed;
 }
 
@@ -74,7 +78,7 @@ a {
     cursor: pointer;
 }
 
-.textMain__active {
+.__active {
     margin-top: 10px;
     font-weight: 700;
     cursor: pointer;
@@ -166,7 +170,8 @@ a {
 
 .mainCentralContainer {
     /* position: absolute; */
-    width: 75%;
+    width: 75vw;
+    height: 100vh;
     /* margin: auto; */
     margin-left: 25%;
 
@@ -305,6 +310,11 @@ a {
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+}
+
+.HeaderPart__dots:hover {
+    background-color: rgb(184, 184, 184);
+    border-radius: 50%;
 }
 
 .HeaderPart__dots__active {
@@ -733,6 +743,7 @@ a {
         background-size: contain;
         margin-bottom: 30px;
     }
+
 
     .main-blockWithPages__blockWithMainSearchAndOthersPages p {
         display: none;

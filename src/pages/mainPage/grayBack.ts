@@ -35,14 +35,14 @@ class grayBack {
         }
         if (this.wrapperBlock.classList.contains('graybackground__not')) {
             menuNotif.wrapperNotificationPages.innerHTML = "";
-            menuNotif.wrapperNotificationPages.classList.add('notification__action');
+            menuNotif.wrapperNotificationPages.classList.add('notification__active');
             menuNotif.wrapperNotificationPages.classList.remove('notification');
             this.wrapperBlock.classList.add('graybackground')
             this.wrapperBlock.classList.remove('graybackground__not')
             menuNotif.wrapperNotificationPages.remove();
             cx.wrapperSearchPage.innerHTML = "";
 
-            cx.wrapperSearchPage.classList.add('searchModalWindow__action');
+            cx.wrapperSearchPage.classList.add('searchModalWindow__active');
             cx.wrapperSearchPage.classList.remove('searchModalWindow');
             cx.wrapperSearchPage.remove();
             window.location.hash = "main"

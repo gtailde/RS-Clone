@@ -1,4 +1,5 @@
 import { createHtmlElement } from "../../utils/createHtmlElement";
+import mainPages from "./mainPage";
 class AddPosts {
     wrapperBlock: HTMLElement;
     constructor() {
@@ -23,6 +24,7 @@ class AddPosts {
     draw() {
         this.PageAddPost();
     }
+
 }
 const cg = new AddPosts();
 export default cg;

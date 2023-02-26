@@ -3,10 +3,13 @@
     width: 400px;
     height: 460px;
     background: white;
+    margin: auto;
     position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     border-radius: 15px;
-    top: 29%;
-    left: 31%;
 }
 
 .menu_active {
