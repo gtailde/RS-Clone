@@ -4,8 +4,8 @@
 @import "./style/userPublications.scss";
 @import "./style/userPost.scss";
 @import "./style/signUpPage.scss";
-@import './style/authorizationPage.scss'
-@import "./style/header.css";
+@import './style/authorizationPage.scss';
+/* @import "./style/header.css"; */
 @import "./style/styleMainPages.css";
 @import "./style/styleAddBlock.css";
 @import "./style/styleMenuPosts.css";
@@ -15,4 +15,3 @@
 @import "./style/searchPageStyle.css";
 @import "./style/grayBack.css";
 @import "./style/settingsMenu.css"
-

@@ -9,6 +9,7 @@ import message from "./messagePage";
 import cg from "./pageWithAddPosts";
 import menuNotif from "./notificationsPage";
 import exportSettings from "./settingsMenu";
+import UserProfilePage from "../userProfilePage/userProfilePage";
 class MainPages {
     wrapperContainer: HTMLElement;
     Container: HTMLElement;
@@ -181,6 +182,8 @@ class MainPages {
         this.appendTo(drawFooter.wrapper, this.wrapperContainer)
     }
     handler = (e: Event): void => {
+        const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+        const profilePage = new UserProfilePage(data.id);
         let target = e.target as HTMLElement;
         // const textMain = document.querySelectorAll('.textMain.__active');
         // console.log(textMain)
@@ -194,54 +197,38 @@ class MainPages {
             grayback.draw();
             ch.draw();
         }
-        // if (target.classList.contains('main-blockWithPages__blockWithMainSearchAndOthersPages')) {
 
-        //     if (target.innerText === "Сообщения") {
-        //         target.classList.remove('__active')
-        //         message.draw();
-        //         this.Container.innerHTML = ""
-        //         target.removeEventListener('click', this.handler);
-        //         target.children[1].classList.add('__active')
-        //     }
-        //     if (target.innerText === "Создать") {
-        //         target.classList.remove('__active')
-        //         target.classList.add('__active');
-        //         target.removeEventListener('click', this.handler);
-        //         drawFooter.wrapper.innerHTML = "";
-        //         header.wrapper.innerHTML = "";
-        //         drawLeftBlock.wrapper.innerHTML = "";
-        //         this.Container.innerHTML = "";
-        //         message.wrapperBlockMessagePage.innerHTML = ""
-        //         message.MainBlockWithHistory.innerHTML = "";
-        //         message.MainBlockWithHistory.remove();
-        //         message.wrapperBlockMessagePage.remove()
-        //         this.draw();
-        //         target.children[1].classList.add('__active');
-        //         grayback.wrapperBlock.classList.remove('graybackground')
-        //         grayback.wrapperBlock.classList.add('graybackground__active');
-        //         cg.wrapperBlock.innerHTML = ""
-        //         grayback.remove.classList.add('removeIcon_active');
-        //         grayback.remove.classList.remove('removeIcon');
-        //         cg.wrapperBlock.classList.remove('blockAddPost__active');
-        //         cg.wrapperBlock.classList.add('blockAddPost');
-        //         grayback.draw();
-        //         cg.draw();
-
-        //     }
-        // }
         if (target.classList.contains('textMain')) {
 
             if (target.innerHTML === "Сообщения") {
 
                 // target.classList.add('__active');
                 target.removeEventListener('click', this.handler);
+                document.body.innerHTML = "";
                 message.wrapperBlockMessagePage.innerHTML = ""
                 message.MainBlockWithHistory.innerHTML = "";
-                this.Container.innerHTML = ""
+                drawFooter.wrapper.innerHTML = "";
+                drawLeftBlock.wrapper.innerHTML = "";
+                this.draw();
+                this.Container.innerHTML = "";
+                this.Container.remove();
+
                 message.draw();
 
                 window.location.hash = "message"
 
+            }
+            if (target.innerHTML === "Профиль") {
+                target.removeEventListener('click', this.handler);
+                document.body.innerHTML = "";
+                drawFooter.wrapper.innerHTML = "";
+                drawLeftBlock.wrapper.innerHTML = "";
+                this.draw();
+                this.Container.innerHTML = "";
+                this.Container.remove();
+                profilePage.wrapper.innerHTML = "";
+                profilePage.draw();
+                window.location.hash = "profile";
             }
             if (target.innerHTML === "Создать") {
                 // clear()
@@ -256,6 +243,8 @@ class MainPages {
                 // message.MainBlockWithHistory.remove();
                 // message.wrapperBlockMessagePage.remove()
                 // this.draw();
+                profilePage.wrapper.innerHTML = "";
+
                 grayback.wrapperBlock.classList.remove('graybackground')
                 grayback.wrapperBlock.classList.add('graybackground__active');
                 cg.wrapperBlock.innerHTML = ""
@@ -281,6 +270,7 @@ class MainPages {
                 // textMain[0].classList.remove('__active')
                 // target.classList.add('textMain__active');
                 // target.classList.remove('textMain');
+                profilePage.wrapper.innerHTML = "";
                 grayback.draw();
                 grayback.wrapperBlock.classList.add('graybackground__not');
                 grayback.wrapperBlock.classList.remove('graybackground');
@@ -306,6 +296,8 @@ class MainPages {
                 window.location.hash = "notification";
             }
             if (target.innerHTML === "Поисковой запрос") {
+                profilePage.wrapper.innerHTML = "";
+                profilePage.wrapper.remove()
                 // target.classList.add('__active');
                 menuNotif.wrapperNotificationPages.innerHTML = "";
                 menuNotif.wrapperNotificationPages.classList.add('notification__active');
@@ -339,20 +331,11 @@ class MainPages {
             if (target.innerHTML === "Главная") {
                 // target.classList.add('__active');
                 target.removeEventListener('click', this.handler);
-                drawFooter.wrapper.innerHTML = "";
-                header.wrapper.innerHTML = "";
+                document.body.innerHTML = "";
                 drawLeftBlock.wrapper.innerHTML = "";
-                this.Container.innerHTML = "";
-                window.location.hash = "main"
+                drawFooter.wrapper.innerHTML = "";
+                this.Container.innerHTML = ""
                 this.draw();
-                grayback.wrapperBlock.classList.remove('graybackground');
-                message.wrapperBlockMessagePage.innerHTML = ""
-                message.MainBlockWithHistory.innerHTML = "";
-                message.MainBlockWithHistory.remove();
-                message.wrapperBlockMessagePage.remove();
-                cx.wrapperSearchPage.innerHTML = ""
-                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
-                cx.wrapperSearchPage.classList.remove('searchModalWindow')
             }
             if (target.innerHTML === "Ещё") {
                 target.removeEventListener('click', this.handler);
