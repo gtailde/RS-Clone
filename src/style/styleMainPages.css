@@ -6,17 +6,7 @@
     border: 0;
 }
 
-.grayBackground {
-    display: none;
-}
 
-.grayBackground__active {
-    position: fixed;
-    background-color: gray;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
 
 body {
     background-color: white;
@@ -40,6 +30,10 @@ a {
 .left-Container {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 18vw;
     position: fixed;
     height: 100vh;
     left: 0;
@@ -90,7 +84,7 @@ a {
     cursor: pointer;
 }
 
-.textMain__active {
+.__active {
     margin-top: 10px;
     font-weight: 700;
     cursor: pointer;
@@ -182,7 +176,8 @@ a {
 
 .mainCentralContainer {
     /* position: absolute; */
-    width: 75%;
+    width: 75vw;
+    height: 100vh;
     /* margin: auto; */
     margin-left: 25%;
 
@@ -323,6 +318,11 @@ a {
     cursor: pointer;
 }
 
+.HeaderPart__dots:hover {
+    background-color: rgb(184, 184, 184);
+    border-radius: 50%;
+}
+
 .HeaderPart__dots__active {
     background: url(../assets/icons/ActiveDots.png );
     cursor: pointer;
@@ -404,87 +404,6 @@ a {
     margin-bottom: 50px;
 }
 
-.menu {
-    width: 400px;
-    height: 460px;
-    background: white;
-    border-radius: 15px;
-}
-
-.LineInMenu {
-    color: gray;
-    background-color: gray;
-    border: none;
-    height: 0.5px;
-}
-
-.TextElementInMenu {
-    text-align: center;
-}
-
-.TextElementInMenu:nth-child(1) {
-    color: red;
-    padding-top: 15px;
-}
-
-.TextElementInMenu:nth-child(3) {
-    color: red;
-}
-
-.searchModalWindow {
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 400px;
-    height: 100%;
-    padding-left: 25px;
-    padding-right: 25px;
-    color: white;
-    font-size: 18px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.inputTextSearch {
-    outline: none;
-    border: none;
-    -webkit-appearance: none;
-    width: 100%;
-    height: 50px;
-    background-color: rgb(196, 191, 191);
-    padding-left: 15px;
-    font-size: 18px;
-    border-radius: 15px;
-    vertical-align: middle;
-}
-
-.cancleButton {
-    position: relative;
-    margin-top: -35px;
-    margin-left: auto;
-    width: 20px;
-    /* Ширина кнопки */
-    height: 20px;
-    border-radius: 50%;
-    background-color: gray;
-}
-
-.inputClearSearch {
-    width: 10px;
-    /* Ширина кнопки */
-    height: 10px;
-    margin-top: 50%;
-    margin-left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    /* Высота кнопки */
-    border: none;
-    /* Убираем рамку */
-    background: url(../assets/icons/free-icon-cancel-3482248.png) no-repeat;
-    background-size: contain;
-}
-
 .line {
     height: 1px;
     border: none;
@@ -492,16 +411,6 @@ a {
     color: gray;
     margin-bottom: 50px;
     margin-top: 35px;
-}
-
-.lineInput {
-    background-color: black;
-    color: white;
-    height: 1px;
-    border: none;
-    margin-top: 35px;
-    width: 100%;
-    padding: 0px;
 }
 
 .commentBlock {
@@ -532,85 +441,7 @@ a {
     display: flex;
 }
 
-.notification {
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 400px;
-    height: 100%;
-    padding-left: 15px;
-    padding-right: 25px;
-    color: white;
-    font-size: 18px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
 
-.borderGradientNotification {
-    width: 50px;
-    border-radius: 50%;
-    position: relative;
-    background: linear-gradient(75deg, orange, purple);
-    height: 50px;
-}
-
-.pngStoryNotification {
-    height: 45px;
-    width: 45px;
-    position: absolute;
-    border-radius: 50%;
-    background: blue;
-    margin-top: 50%;
-    margin-left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}
-
-.notification__AccountInfo {
-    display: flex;
-    width: 100%;
-    height: 90px;
-    font-size: 14px;
-}
-
-.TextInAccount {
-    width: 150px;
-    margin-left: 20px;
-}
-
-.buttonSubscribe {
-    height: 40px;
-    width: 130px;
-    background-color: rgb(15, 128, 244);
-    border-radius: 25px;
-    margin-left: auto;
-}
-
-.buttonSubscribe__active {
-    width: 110px;
-    height: 40px;
-    background-color: gray;
-}
-
-.buttonSubscribe p {
-    text-align: center;
-    font-size: 14px;
-}
-
-.notification__AccountInfoOnThisWeek {
-    display: flex;
-    width: 100%;
-    height: 90px;
-    font-size: 14px;
-}
-
-.LineNotificationOnThisWeekAndLateWeek {
-    border: none;
-    background-color: gray;
-    color: gray;
-    height: 1px;
-}
 
 .rightContainer {
     margin-top: -260px;
@@ -918,6 +749,7 @@ a {
         background-size: contain;
         margin-bottom: 30px;
     }
+
 
     .main-blockWithPages__blockWithMainSearchAndOthersPages p {
         display: none;

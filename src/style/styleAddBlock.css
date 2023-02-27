@@ -3,6 +3,16 @@
     height: 589px;
     background-color: white;
     border-radius: 25px;
+    margin: auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.blockAddPost__active {
+    display: none;
 }
 
 .blockAddPost__nameBlock {
@@ -10,6 +20,16 @@
     padding-top: 20px;
     color: black;
     font-size: 18px;
+}
+
+.iconAddPosts {
+    width: 150px;
+    height: 150px;
+    background: url(../assets/icons/imageAddPosts.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 35%;
+    margin-top: 20%;
 }
 
 .blockAddPost hr {
@@ -21,7 +41,7 @@
 
 .blockAddPost__AddPost {
     text-align: center;
-    padding-top: 40%;
+
     color: black;
     font-size: 24px;
 }

@@ -2,12 +2,21 @@ import { createHtmlElement } from "../../utils/createHtmlElement";
 import drawLeftBlock from "./LeftBlock";
 import drawFooter from "./footer"
 import header from "./header";
+import cx from "./searchPage";
+import ch from "./menuSettingPosts";
+import grayback from "./grayBack";
+import message from "./messagePage";
+import cg from "./pageWithAddPosts";
+import menuNotif from "./notificationsPage";
+import exportSettings from "./settingsMenu";
 class MainPages {
+    wrapperContainer: HTMLElement;
     Container: HTMLElement;
     line: HTMLElement;
     constructor() {
         this.Container = createHtmlElement('mainCentralContainer', 'div');
         this.line = createHtmlElement('MainleftLine', 'div');
+        this.wrapperContainer = createHtmlElement('wrapper', 'div');
     }
     appendTo(elem: HTMLElement, toElem: HTMLElement) {
         toElem.append(elem);
@@ -33,9 +42,7 @@ class MainPages {
         const mainCentralContainerContainerWithContent = createHtmlElement('mainCentralContainer__ContainerWithContent', 'div');
         this.appendTo(mainCentralContainerContainerWithContent, this.Container)
         const content = createHtmlElement('Content', 'div');
-        for (let i = 0; i < 4; i++) {
-
-
+        for (let i = 0; i < 1; i++) {
             const HeaderPartBlockContent = createHtmlElement('Content__HeaderPart', 'div');
             this.appendTo(HeaderPartBlockContent, content);
             const borderProfileAvatarContent = createHtmlElement('borderProfileGradient', 'div');
@@ -165,21 +172,221 @@ class MainPages {
     }
 
     renderMainPages() {
-        const wrapperContainer = createHtmlElement('wrapper', 'div');
-        this.appendTo(drawLeftBlock.wrapper, wrapperContainer)
-        this.appendTo(this.line, wrapperContainer);
-        this.appendTo(this.Container, wrapperContainer); 4
-        this.appendTo(wrapperContainer, document.body);
+
+        this.appendTo(header.wrapper, this.wrapperContainer)
+        this.appendTo(drawLeftBlock.wrapper, this.wrapperContainer)
+        this.appendTo(this.line, this.wrapperContainer);
+        this.appendTo(this.Container, this.wrapperContainer);
+        this.appendTo(this.wrapperContainer, document.body);
+        this.appendTo(drawFooter.wrapper, this.wrapperContainer)
+    }
+    handler = (e: Event): void => {
+        let target = e.target as HTMLElement;
+        // const textMain = document.querySelectorAll('.textMain.__active');
+        // console.log(textMain)
+        if (target.classList.contains("HeaderPart__dots")) {
+            grayback.wrapperBlock.classList.remove('graybackground')
+            grayback.wrapperBlock.classList.add('graybackground__active');
+            ch.wrapperMenuPost.classList.remove('menu_active');
+            ch.wrapperMenuPost.classList.add('menu');
+            grayback.remove.classList.add('removeIcon_active');
+            grayback.remove.classList.remove('removeIcon');
+            grayback.draw();
+            ch.draw();
+        }
+        // if (target.classList.contains('main-blockWithPages__blockWithMainSearchAndOthersPages')) {
+
+        //     if (target.innerText === "Сообщения") {
+        //         target.classList.remove('__active')
+        //         message.draw();
+        //         this.Container.innerHTML = ""
+        //         target.removeEventListener('click', this.handler);
+        //         target.children[1].classList.add('__active')
+        //     }
+        //     if (target.innerText === "Создать") {
+        //         target.classList.remove('__active')
+        //         target.classList.add('__active');
+        //         target.removeEventListener('click', this.handler);
+        //         drawFooter.wrapper.innerHTML = "";
+        //         header.wrapper.innerHTML = "";
+        //         drawLeftBlock.wrapper.innerHTML = "";
+        //         this.Container.innerHTML = "";
+        //         message.wrapperBlockMessagePage.innerHTML = ""
+        //         message.MainBlockWithHistory.innerHTML = "";
+        //         message.MainBlockWithHistory.remove();
+        //         message.wrapperBlockMessagePage.remove()
+        //         this.draw();
+        //         target.children[1].classList.add('__active');
+        //         grayback.wrapperBlock.classList.remove('graybackground')
+        //         grayback.wrapperBlock.classList.add('graybackground__active');
+        //         cg.wrapperBlock.innerHTML = ""
+        //         grayback.remove.classList.add('removeIcon_active');
+        //         grayback.remove.classList.remove('removeIcon');
+        //         cg.wrapperBlock.classList.remove('blockAddPost__active');
+        //         cg.wrapperBlock.classList.add('blockAddPost');
+        //         grayback.draw();
+        //         cg.draw();
+
+        //     }
+        // }
+        if (target.classList.contains('textMain')) {
+
+            if (target.innerHTML === "Сообщения") {
+
+                // target.classList.add('__active');
+                target.removeEventListener('click', this.handler);
+                message.wrapperBlockMessagePage.innerHTML = ""
+                message.MainBlockWithHistory.innerHTML = "";
+                this.Container.innerHTML = ""
+                message.draw();
+
+                window.location.hash = "message"
+
+            }
+            if (target.innerHTML === "Создать") {
+                // clear()
+                // target.classList.add('__active');
+
+                // drawFooter.wrapper.innerHTML = "";
+                // header.wrapper.innerHTML = "";
+                // drawLeftBlock.wrapper.innerHTML = "";
+                // this.Container.innerHTML = "";
+                // message.wrapperBlockMessagePage.innerHTML = ""
+                // message.MainBlockWithHistory.innerHTML = "";
+                // message.MainBlockWithHistory.remove();
+                // message.wrapperBlockMessagePage.remove()
+                // this.draw();
+                grayback.wrapperBlock.classList.remove('graybackground')
+                grayback.wrapperBlock.classList.add('graybackground__active');
+                cg.wrapperBlock.innerHTML = ""
+                grayback.remove.classList.add('removeIcon_active');
+                grayback.remove.classList.remove('removeIcon');
+                cg.wrapperBlock.classList.remove('blockAddPost__active');
+                cg.wrapperBlock.classList.add('blockAddPost');
+                grayback.draw();
+                menuNotif.wrapperNotificationPages.innerHTML = "";
+                menuNotif.wrapperNotificationPages.classList.add('notification__active');
+                menuNotif.wrapperNotificationPages.classList.remove('notification');
+                grayback.wrapperBlock.classList.remove('graybackground__not');
+                menuNotif.wrapperNotificationPages.remove();
+                cx.wrapperSearchPage.innerHTML = "";
+                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
+                cx.wrapperSearchPage.classList.remove('searchModalWindow');
+                cx.wrapperSearchPage.remove();
+                window.location.hash = "create"
+                cg.draw();
+                target.removeEventListener('click', this.handler);
+            }
+            if (target.innerHTML === "Уведомления") {
+                // textMain[0].classList.remove('__active')
+                // target.classList.add('textMain__active');
+                // target.classList.remove('textMain');
+                grayback.draw();
+                grayback.wrapperBlock.classList.add('graybackground__not');
+                grayback.wrapperBlock.classList.remove('graybackground');
+                grayback.wrapperBlock.classList.remove('graybackground__active');
+                // drawFooter.wrapper.innerHTML = "";
+                // header.wrapper.innerHTML = "";
+                // drawLeftBlock.wrapper.innerHTML = "";
+                // this.Container.innerHTML = "";
+                // this.draw();
+                grayback.wrapperBlock.classList.remove('graybackground');
+                // message.wrapperBlockMessagePage.innerHTML = ""
+                // message.MainBlockWithHistory.innerHTML = "";
+                // message.MainBlockWithHistory.remove();
+                // message.wrapperBlockMessagePage.remove();
+                menuNotif.wrapperNotificationPages.innerHTML = ""
+                if (menuNotif.wrapperNotificationPages.classList.contains('notification__active')) {
+                    menuNotif.wrapperNotificationPages.classList.remove('notification__active')
+                }
+                // menuNotif.wrapperNotificationPages.classList.remove('notification__active');
+                menuNotif.wrapperNotificationPages.classList.add('notification')
+                menuNotif.draw()
+                target.removeEventListener('click', this.handler);
+                window.location.hash = "notification";
+            }
+            if (target.innerHTML === "Поисковой запрос") {
+                // target.classList.add('__active');
+                menuNotif.wrapperNotificationPages.innerHTML = "";
+                menuNotif.wrapperNotificationPages.classList.add('notification__active');
+                menuNotif.wrapperNotificationPages.classList.remove('notification');
+                menuNotif.wrapperNotificationPages.remove();
+                cx.wrapperSearchPage.innerHTML = "";
+
+                // cx.wrapperSearchPage.classList.add('searchModalWindow__active');
+                // cx.wrapperSearchPage.classList.remove('searchModalWindow');
+                // cx.wrapperSearchPage.remove();
+                grayback.draw();
+                // drawFooter.wrapper.innerHTML = "";
+                // header.wrapper.innerHTML = "";
+                // drawLeftBlock.wrapper.innerHTML = "";
+                // this.Container.innerHTML = "";
+                // this.draw();
+                grayback.wrapperBlock.classList.add('graybackground__not');
+                grayback.wrapperBlock.classList.remove('graybackground__active');
+                grayback.wrapperBlock.classList.remove('graybackground');
+                // message.wrapperBlockMessagePage.innerHTML = ""
+                // message.MainBlockWithHistory.innerHTML = "";
+                // message.MainBlockWithHistory.remove();
+                // message.wrapperBlockMessagePage.remove();
+                cx.wrapperSearchPage.innerHTML = ""
+                cx.wrapperSearchPage.classList.remove('searchModalWindow__active');
+                cx.wrapperSearchPage.classList.add('searchModalWindow')
+                cx.draw();
+                target.removeEventListener('click', this.handler);
+                window.location.hash = "search";
+            }
+            if (target.innerHTML === "Главная") {
+                // target.classList.add('__active');
+                target.removeEventListener('click', this.handler);
+                drawFooter.wrapper.innerHTML = "";
+                header.wrapper.innerHTML = "";
+                drawLeftBlock.wrapper.innerHTML = "";
+                this.Container.innerHTML = "";
+                window.location.hash = "main"
+                this.draw();
+                grayback.wrapperBlock.classList.remove('graybackground');
+                message.wrapperBlockMessagePage.innerHTML = ""
+                message.MainBlockWithHistory.innerHTML = "";
+                message.MainBlockWithHistory.remove();
+                message.wrapperBlockMessagePage.remove();
+                cx.wrapperSearchPage.innerHTML = ""
+                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
+                cx.wrapperSearchPage.classList.remove('searchModalWindow')
+            }
+            if (target.innerHTML === "Ещё") {
+                target.removeEventListener('click', this.handler);
+                message.wrapperBlockMessagePage.innerHTML = ""
+                message.MainBlockWithHistory.innerHTML = "";
+                message.MainBlockWithHistory.remove();
+                message.wrapperBlockMessagePage.remove();
+                cx.wrapperSearchPage.innerHTML = ""
+                // grayback.draw();
+                // grayback.wrapperBlock.classList.add('graybackground__not');
+                // grayback.wrapperBlock.classList.remove('graybackground__active');
+                // grayback.wrapperBlock.classList.remove('graybackground');
+                cx.wrapperSearchPage.classList.add('searchModalWindow__active');
+                cx.wrapperSearchPage.classList.remove('searchModalWindow');
+
+                exportSettings.wrapperSetting.classList.add('wrapperSetting__active');
+                exportSettings.wrapperSetting.classList.remove('wrapperSetting');
+                exportSettings.draw();
+
+
+            }
+        }
+
     }
     draw() {
+        window.location.hash = "main"
         header.draw()
         drawLeftBlock.draw()
+        drawFooter.draw();
         this.renderMainPages();
         this.storyBlock();
         this.contentBlock()
         this.rightRecommendation()
-        drawFooter.draw()
-
+        this.wrapperContainer.addEventListener('click', this.handler)
     }
 }
 const mainPages = new MainPages();

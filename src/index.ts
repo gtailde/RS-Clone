@@ -1,4 +1,5 @@
 import "./style.css";
+
 import implementsUserProfilePage from "./pages/userProfilePage/userProfilePage";
 import implementsAuthorizationPage from "./pages/authorizationPage/authorizationPage";
 import implementsSignUpPage from "./pages/signUpPage/signUpPage";
