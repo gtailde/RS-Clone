@@ -2,6 +2,7 @@ import { createHtmlElement } from '../../utils/createHtmlElement';
 const logo = require('../../assets/icons/insta_logo.svg');
 const bg = require('../../assets/img/bg.png');
 import { getApi } from '../../components/api/api';
+import UserProfilePage from '../userProfilePage/userProfilePage';
 
 class AuthorizationPage {
   wrapper: HTMLElement;
@@ -73,9 +74,13 @@ class AuthorizationPage {
       };
 
       e.preventDefault();
-      getApi
-        .login(userData.password, userData.username)
-        .then((result) => window.localStorage.setItem('userDataAccess', JSON.stringify(result)));
+      getApi.login(userData.password, userData.username).then((result) => {
+        window.localStorage.setItem('userDataAccess', JSON.stringify(result));
+        const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+        const loadUserProfilePage = new UserProfilePage(data.id);
+        document.body.innerHTML = '';
+        loadUserProfilePage.draw();
+      });
     });
     // });
     const authorizationFormBodyLineWrapper = createHtmlElement('authorization-form__line-wrapper', 'div');

@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createHtmlElement } from '../../utils/createHtmlElement';
 const settings_icon = require('../../assets/icons/settings-icon.svg');
 import UserStoriesComponent from '../../components/userStories/userStories';
 import UserPublicationsComponent from '../../components/userPublications/userPublications';
 import { getApi } from '../../components/api/api';
+
 class UserProfilePage {
   wrapper: HTMLElement;
   // innerWrapper: HTMLElement;
@@ -26,11 +29,47 @@ class UserProfilePage {
 
     // Top
     const userAboutImageWrapper = createHtmlElement('user-about-image-wrapper', 'div');
+    const userAboutImageAdd = createHtmlElement('user-about-image-add', 'form') as HTMLFormElement;
+    userAboutImageAdd.id = 'addImageForm';
+    const userAboutImageAddButton = createHtmlElement('user-about-image-add-button', 'input') as HTMLInputElement;
+    const userAboutImageAddButtonLabel = createHtmlElement(
+      'user-about-image-add-button-label',
+      'label',
+      'Добавить'
+    ) as HTMLLabelElement;
+    // userAboutImageAddButtonLabel.htmlFor = 'user-about-image-add-button';
+    userAboutImageAddButton.type = 'file';
+    userAboutImageAddButton.accept = 'image/*';
+    userAboutImageAddButton.name = 'add';
+    userAboutImageAddButton.id = 'add';
+    userAboutImageAddButtonLabel.append(userAboutImageAddButton);
+    userAboutImageAdd.append(userAboutImageAddButtonLabel);
+    userAboutImageWrapper.append(userAboutImageAdd);
+
     const userImage = new Image();
     userImage.src = 'https://via.placeholder.com/150';
     userImage.className = 'user-about-image';
+    userImage.style.cursor = 'pointer';
+
     this.appendTo(userImage, userAboutImageWrapper);
     this.appendTo(userAboutImageWrapper, userAboutWrapper);
+
+    // User profile photo add
+    userAboutImageAdd.addEventListener('change', async (e) => {
+      const image = document.querySelector('.user-about-image-add-button') as HTMLInputElement;
+
+      const uploadImage = getApi.uploadIMG(image);
+      uploadImage.then((result) => {
+        let userId;
+        if (localStorage.getItem('userDataAccess') !== null) {
+          userId = JSON.parse(localStorage.getItem('userDataAccess')!);
+          console.log(result.file);
+          const saveToProfile = getApi.addIMG(userId.id, 'profile', result.file);
+          saveToProfile.then(res => console.log(res))
+        }
+        // const loadImageToProfile = getApi.addIMG();
+      });
+    });
 
     const userAboutInfoWrapper = createHtmlElement('user-about-info', 'div');
     const userAboutInfoHeader = createHtmlElement('user-about-info__header', 'div');
