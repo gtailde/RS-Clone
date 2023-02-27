@@ -76,10 +76,14 @@ class AuthorizationPage {
       e.preventDefault();
       getApi.login(userData.password, userData.username).then((result) => {
         window.localStorage.setItem('userDataAccess', JSON.stringify(result));
-        const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
-        const loadUserProfilePage = new UserProfilePage(data.id);
-        document.body.innerHTML = '';
-        loadUserProfilePage.draw();
+        // const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+        if (result.id) {
+          const loadUserProfilePage = new UserProfilePage(result.id);
+          document.body.innerHTML = '';
+          loadUserProfilePage.draw();
+        } else {
+          alert('Неправильные данные');
+        }
       });
     });
     // });
