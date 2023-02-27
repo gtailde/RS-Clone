@@ -1,0 +1,20 @@
+.user-stories-wrapper {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 50px;
+  padding: 0 40px;
+  .user-stories-item {
+    // flex: 1 0 0%;
+    text-decoration: none;
+    overflow: hidden;
+    text-align: center;
+    font-size: 12px;
+    color: #262626;
+    font-weight: 600;
+    .user-stories-item__image {
+      border-radius: 50%;
+    }
+  }
+}

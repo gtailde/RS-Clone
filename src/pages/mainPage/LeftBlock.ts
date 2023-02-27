@@ -79,7 +79,9 @@ class leftBlockWithAnyPages {
     // }
     draw() {
         this.renderInstagramLeftBlock();
+
         // this.handler()
+
     }
 }
 const drawLeftBlock = new leftBlockWithAnyPages();
