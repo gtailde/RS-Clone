@@ -257,7 +257,7 @@ class SignUpPage {
           console.log(response.status);
         })
         .then((result) => {
-          alert(result);
+          alert('Успешная регистрация');
           document.body.innerHTML = '';
           implementsAuthorizationPage.draw();
         })
