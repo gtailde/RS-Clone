@@ -47,7 +47,8 @@ class UserProfilePage {
     userAboutImageWrapper.append(userAboutImageAdd);
 
     const userImage = new Image();
-    userImage.src = 'https://via.placeholder.com/150';
+
+
     userImage.className = 'user-about-image';
     userImage.style.cursor = 'pointer';
 
@@ -55,6 +56,7 @@ class UserProfilePage {
     this.appendTo(userAboutImageWrapper, userAboutWrapper);
 
     // User profile photo add
+    const icon = document.querySelector('.main-blockWithPages__PngProfilePage') as HTMLElement;
     userAboutImageAdd.addEventListener('change', async (e) => {
       const image = document.querySelector('.user-about-image-add-button') as HTMLInputElement;
 
@@ -62,21 +64,36 @@ class UserProfilePage {
       uploadImage.then((result) => {
         let userId;
         if (localStorage.getItem('userDataAccess') !== null) {
+
           userId = JSON.parse(localStorage.getItem('userDataAccess')!);
           console.log(result.file);
           const saveToProfile = getApi.addIMG(userId.id, 'profile', result.file);
-          saveToProfile.then(res => console.log(res))
+          localStorage.setItem('img', `${result.file}`)
+          userImage.src = `${result.file}`;
+          icon.style.background = `url(${result.file})`;
+          icon.style.backgroundRepeat = "no-repeat";
+          icon.style.backgroundSize = "contain"
+
+          saveToProfile.then(res => { console.log(res); })
         }
         // const loadImageToProfile = getApi.addIMG();
       });
     });
+    let a = localStorage.getItem('img')!;
+    console.log(a)
+    // userImage.src = localStorage.getItem('img');
 
+    if (localStorage.getItem('img') !== null) {
+      userImage.src = a;
+    } else { userImage.src = 'https://via.placeholder.com/150'; }
+    console.log(localStorage)
     const userAboutInfoWrapper = createHtmlElement('user-about-info', 'div');
     const userAboutInfoHeader = createHtmlElement('user-about-info__header', 'div');
     this.appendTo(userAboutInfoHeader, userAboutInfoWrapper);
     const userAboutInfoHeaderUserName = createHtmlElement('user-about-info__username', 'div');
     getApi.getDataFromUser(this.id).then((result) => {
       userAboutInfoHeaderUserName.innerHTML = result.username;
+
     });
     const userAboutInfoHeaderEditButton = createHtmlElement(
       ['user-about-info__edit-button', 'button'],

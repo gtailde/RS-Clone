@@ -10,6 +10,7 @@ import cg from "./pageWithAddPosts";
 import menuNotif from "./notificationsPage";
 import exportSettings from "./settingsMenu";
 import UserProfilePage from "../userProfilePage/userProfilePage";
+import { getApi } from "../../components/api/api";
 class MainPages {
     wrapperContainer: HTMLElement;
     Container: HTMLElement;
@@ -48,17 +49,26 @@ class MainPages {
             this.appendTo(HeaderPartBlockContent, content);
             const borderProfileAvatarContent = createHtmlElement('borderProfileGradient', 'div');
             const PngAvatar = createHtmlElement('pngProfile', 'div');
+            let link = localStorage.getItem('img');
+            PngAvatar.style.background = `url(${link})`;
+            PngAvatar.style.backgroundRepeat = "no-repeat";
+            PngAvatar.style.backgroundSize = "contain"
             this.appendTo(PngAvatar, borderProfileAvatarContent);
             this.appendTo(borderProfileAvatarContent, HeaderPartBlockContent);
             const textContent = createHtmlElement('textContent', 'div');
             const textInformation = createHtmlElement('textInformation', 'div');
             this.appendTo(textContent, HeaderPartBlockContent)
             this.appendTo(textInformation, textContent);
-            const nameAccontInContent = createHtmlElement('nameAccontInContent', 'div', 'Gog');
-            const dot = createHtmlElement('dot', 'div', '.');
+            const nameAccontInContent = createHtmlElement('nameAccontInContent', 'div');
+            const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+            const profilePage = new UserProfilePage(data.id);
+            getApi.getDataFromUser(profilePage.id).then((result) => {
+                nameAccontInContent.innerHTML = result.username
+            })
+            // const dot = createHtmlElement('dot', 'div', '.');
             const timeBeforeAddContent = createHtmlElement('timeBeforeAddContent', 'div', '1dn');
             this.appendTo(nameAccontInContent, textInformation);
-            this.appendTo(dot, textInformation);
+            // this.appendTo(dot, textInformation);
             this.appendTo(timeBeforeAddContent, textInformation);
             const textInformationAboutAudio = createHtmlElement('textInformationAudio', 'div');
             this.appendTo(textInformationAboutAudio, textContent)
@@ -103,15 +113,28 @@ class MainPages {
 
     }
     rightRecommendation() {
+
+        let link = localStorage.getItem('img');
         const rightContainer = createHtmlElement('rightContainer', 'div');
         this.appendTo(rightContainer, this.Container);
         const YourProfile = createHtmlElement('profileInfoYourAccount', 'div');
         const photoYourProfile = createHtmlElement('PhotoYourProfile', 'div');
+        photoYourProfile.style.background = `url(${link})`;
+        photoYourProfile.style.backgroundRepeat = "no-repeat";
+        photoYourProfile.style.backgroundSize = "contain"
         this.appendTo(photoYourProfile, YourProfile);
         this.appendTo(YourProfile, rightContainer);
         const textInfoAboutYourAcc = createHtmlElement('textInformationNikAndName', 'div');
-        const textInfoNikName = createHtmlElement('textInformationNik', 'div', 'testingAccountName')
-        const textInfoName = createHtmlElement('textInformationName', 'div', 'testingName');
+        const textInfoNikName = createHtmlElement('textInformationNik', 'div');
+
+        const textInfoName = createHtmlElement('textInformationName', 'div',);
+        const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+        console.log(localStorage)
+        const profilePage = new UserProfilePage(data.id);
+        getApi.getDataFromUser(data.id).then((result) => {
+            textInfoNikName.innerHTML = result.username;
+            textInfoName.innerHTML = result.name
+        })
         this.appendTo(textInfoNikName, textInfoAboutYourAcc);
         this.appendTo(textInfoName, textInfoAboutYourAcc);
         this.appendTo(textInfoAboutYourAcc, YourProfile)
@@ -123,6 +146,7 @@ class MainPages {
         this.appendTo(separation, rightContainer);
         const all = createHtmlElement('all', 'div', 'Все');
         this.appendTo(all, separation);
+
         for (let i = 0; i < 5; i++) {
             const recommendation = createHtmlElement('recommendation', 'div');
             const ProfileRecommendationAccount = createHtmlElement('profileAccount', 'div');
@@ -182,6 +206,16 @@ class MainPages {
         this.appendTo(drawFooter.wrapper, this.wrapperContainer)
     }
     handler = (e: Event): void => {
+        const srcImage = document.querySelector('.user-about-image') as HTMLImageElement;
+        // srcImage.addEventListener('change', async (e) => {
+        //     if (srcImage.src !== null) {
+        //         console.log(srcImage?.src)
+        //         iconProfile.style.background = `url(${srcImage?.src})`;
+        //         iconProfile.style.backgroundRepeat = "no-repeat";
+        //         iconProfile.style.backgroundSize = "contain"
+        //         localStorage.icon;
+        //     }
+        // })
         const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
         const profilePage = new UserProfilePage(data.id);
         let target = e.target as HTMLElement;

@@ -3,6 +3,7 @@ const logo = require('../../assets/icons/insta_logo.svg');
 const bg = require('../../assets/img/bg.png');
 import { getApi } from '../../components/api/api';
 import UserProfilePage from '../userProfilePage/userProfilePage';
+import mainPages from '../mainPage/mainPage';
 
 class AuthorizationPage {
   wrapper: HTMLElement;
@@ -80,7 +81,7 @@ class AuthorizationPage {
         if (result.id) {
           const loadUserProfilePage = new UserProfilePage(result.id);
           document.body.innerHTML = '';
-          loadUserProfilePage.draw();
+          mainPages.draw();//////ююююю
         } else {
           alert('Неправильные данные');
         }

@@ -1,5 +1,7 @@
 import { createHtmlElement } from "../../utils/createHtmlElement";
+import UserProfilePage from "../userProfilePage/userProfilePage";
 class leftBlockWithAnyPages {
+    [x: string]: any;
     wrapper: HTMLElement;
     constructor() {
         this.wrapper = createHtmlElement('left-Container', 'div');
@@ -64,6 +66,19 @@ class leftBlockWithAnyPages {
         this.appendTo(this.wrapper, document.body)
         this.appendTo(iconAboutWrapper, this.wrapper)
         this.appendTo(blockWithPages, this.wrapper)
+        const srcImage = document.querySelector('.user-about-image') as HTMLImageElement;
+        let link = localStorage.getItem('img')!;
+        console.log(link);
+        if (localStorage.getItem('img') !== null) {
+            iconProfile.style.background = `url(${link})`;
+            iconProfile.style.backgroundRepeat = "no-repeat";
+            iconProfile.style.backgroundSize = "contain"
+        }
+        else {
+            iconProfile.style.background = `url(${require('../../assets/icons/profile.jpg')})`;
+            iconProfile.style.backgroundRepeat = "no-repeat";
+            iconProfile.style.backgroundSize = "contain"
+        }
     }
     // handler = () => {
     //     const checker = document.querySelectorAll('.textMain');

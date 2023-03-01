@@ -1,6 +1,8 @@
 import { createHtmlElement } from "../../utils/createHtmlElement";
 import messBlock from "./messageBlockWithWriteMessage";
 import grayback from "./grayBack";
+import { getApi } from "../../components/api/api";
+import UserProfilePage from "../userProfilePage/userProfilePage";
 class messageBlockWritenMessage {
     wrapperBlockMessagePage: HTMLElement;
     MainBlockWithHistory: HTMLElement
@@ -14,7 +16,12 @@ class messageBlockWritenMessage {
     messagePage() {
         this.appendTo(this.wrapperBlockMessagePage, document.body);
         const blockWithNamingAndReseelectAccount = createHtmlElement('blockWithNamingAndReselectAccount', 'div');
-        const namingYourAccound = createHtmlElement('nameYourAccountInMessagePage', 'p', 'Name');
+        const namingYourAccound = createHtmlElement('nameYourAccountInMessagePage', 'p');
+        const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+        const profilePage = new UserProfilePage(data.id);
+        getApi.getDataFromUser(profilePage.id).then((result) => {
+            namingYourAccound.innerHTML = result.username;
+        })
         const imgArrowMessageBlock = createHtmlElement('imgReselectACCOUNT', 'div');
         const imgWriteMessage = createHtmlElement('imgWritter', 'div');
         const blockWithAccountMessage = createHtmlElement('blockWithAccountMessage', 'div');
