@@ -53,10 +53,16 @@ body {
 
           .authorization-form__input:nth-child(1) {
             margin-bottom: 5px;
+            &:focus {
+              outline: 1px solid rgb(113, 113, 113);
+            }
           }
 
           .authorization-form__input:nth-child(2) {
             margin-bottom: 10px;
+            &:focus {
+              outline: 1px solid rgb(113, 113, 113);
+            }
           }
 
           .authorization-form__log-in {
@@ -69,10 +75,6 @@ body {
             padding: 10px 0;
             width: 100%;
             margin-bottom: 20px;
-
-            &:hover {
-              background-color: #2c99ec;
-            }
           }
         }
       }

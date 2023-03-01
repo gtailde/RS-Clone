@@ -1,6 +1,9 @@
 import { createHtmlElement } from '../../utils/createHtmlElement';
 const logo = require('../../assets/icons/insta_logo.svg');
 const bg = require('../../assets/img/bg.png');
+import { getApi } from '../../components/api/api';
+import UserProfilePage from '../userProfilePage/userProfilePage';
+import mainPages from '../mainPage/mainPage';
 
 class AuthorizationPage {
   wrapper: HTMLElement;
@@ -65,6 +68,26 @@ class AuthorizationPage {
     ) as HTMLButtonElement;
     authorizationFormBodyLogIn.type = 'submit';
 
+    authorizationFormBodyLogIn.addEventListener('click', (e) => {
+      const userData = {
+        username: authorizationFormBodyLogin.value,
+        password: authorizationFormBodyPassword.value,
+      };
+
+      e.preventDefault();
+      getApi.login(userData.password, userData.username).then((result) => {
+        window.localStorage.setItem('userDataAccess', JSON.stringify(result));
+        // const data = JSON.parse(window.localStorage.getItem('userDataAccess')!);
+        if (result.id) {
+          const loadUserProfilePage = new UserProfilePage(result.id);
+          document.body.innerHTML = '';
+          mainPages.draw();//////ююююю
+        } else {
+          alert('Неправильные данные');
+        }
+      });
+    });
+    // });
     const authorizationFormBodyLineWrapper = createHtmlElement('authorization-form__line-wrapper', 'div');
     const authorizationFormBodyLineLeft = createHtmlElement('authorization-form__line-left', 'div');
     const authorizationFormBodyLineText = createHtmlElement('authorization-form__line-text', 'div', 'ИЛИ');

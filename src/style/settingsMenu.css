@@ -1,0 +1,19 @@
+.wrapperSetting {
+    display: none;
+}
+
+.wrapperSetting__active {
+    width: 200px;
+    height: 50px;
+}
+
+.changeThemeWhiteAndDark {
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    position: fixed;
+    border: 0.3px solid gray;
+    background-color: white;
+    top: 550px;
+    border-radius: 15px;
+}
