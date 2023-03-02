@@ -1,0 +1,121 @@
+.wrapper1 {
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    left: 39%;
+    top: 16%;
+}
+
+.wrapper1__active {
+    display: none;
+}
+
+.headerMessageBlockForSearch {
+    width: 400px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerMessageBlockForSearch {
+    width: 100%;
+    height: 80%;
+    overflow: overlay;
+}
+
+.namaing {
+    font-size: 18px;
+    margin-left: 22%;
+    margin-right: 18%;
+}
+
+.Link {
+    text-decoration: none;
+    color: aqua;
+    font-size: 18px;
+}
+
+hr {
+    margin-top: -5px;
+}
+
+.Who {
+    font-size: 18px;
+}
+
+.SearchPeople {
+    font-size: 16px;
+    outline: none;
+    border: none;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.supperLine {
+    margin-top: 15px;
+}
+
+.successed {
+    margin-top: 20px;
+}
+
+.profileSearchAccount {
+    height: 70px;
+
+    width: 100%;
+    display: flex;
+}
+
+.iconCancleButton {
+    width: 20px;
+    height: 20px;
+    background: url(../assets/icons/iconsMessage/cancleButtonMessage.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.profileSearchAccount:hover {
+    border-radius: 15px;
+    background-color: rgb(215, 215, 215);
+}
+
+.profileMessageImg {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background: url(../assets/icons/profile-active.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.namingAccountSearch {
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.checker {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.checker__active {
+    margin-left: auto;
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background: url(../assets/icons/iconsMessage/submitePicture.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}

@@ -1,0 +1,43 @@
+.graybackground {
+    display: none;
+}
+
+.graybackground__not {
+    background: rgba(255, 255, 255, 0.1);
+    width: 100vw;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    bottom: 0;
+    height: 134vh;
+    position: fixed;
+}
+
+.graybackground__active {
+    position: fixed;
+    background-color: rgba(159, 157, 157, 0.5);
+    width: 100vw;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    bottom: 0;
+    height: 134vh;
+
+}
+
+.removeIcon {
+    display: none;
+}
+
+.removeIcon_active {
+    display: block;
+    width: 75px;
+    height: 65px;
+    /* background: black; */
+    background: url(../assets/icons/free-icon-cancel-3482248.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: fixed;
+    right: 140px;
+    top: 30px;
+}
