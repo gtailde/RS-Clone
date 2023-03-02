@@ -5,7 +5,7 @@
 ##### [gtailde] (https://github.com/gtailde)
 ##### [wanderer0001] (https://github.com/wanderer0001)
 ---
-### [Deploy] (instaclone-rsclone.netlify.app)
+### [Deploy] (https://instaclone-rsclone.netlify.app)
 
 ## Инструкция
 При входе в аккаунт вы можете использовать как почту , так и имена. Если выбиет ошибку неверные данные , то используйте имя. 
